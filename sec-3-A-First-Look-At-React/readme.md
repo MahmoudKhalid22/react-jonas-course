@@ -92,7 +92,15 @@ To get the first feeling of how react keep user interface sync with state let's 
 
    React does all this by employing something called virtual dom, a fiber tree, one way data flow and many other techniques that we will study throughout this course
 
-## (4) setting up a new react apps
+## (4) a new react apps
+
+### (a) setting up tools (vscode - nodejs - some extensions like(eslint - prettier - ....)) and adding some snippets
+
+### (b) pure react
+
+### (c) pure react
+
+### (d) pure react
 
 ### (5) Questions
 
