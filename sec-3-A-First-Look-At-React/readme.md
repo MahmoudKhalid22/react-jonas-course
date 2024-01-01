@@ -53,15 +53,48 @@ To get the first feeling of how react keep user interface sync with state let's 
 [codesandbox link](https://codesandbox.io/s/react-first-app-advice-52879f)
 
 1- They have very different philosophy
+
 2- every element in html you need to give it a class to select it by javascript while you don't need that with react
+
 3- you select elements manually by js and give give them conntent manually but you don't need that in react
+
 4- you might say this is small there is no need to react and this is true for small applications like this but as soon as we get just a little bit bigger it starts kind of getting out of control so you have to selecting tons of elements and updatign them manually and make a lot of code that with react we don't need this
 
 ## (3) what is react
 
+- Abstraction and high level overview of react and how it works
+
+1. what is react
+
+   ![](./06.jpg)
+
+   Let's extend this definition a little bit so that becomes more helpful
+   ![](./07.jpg)
+
+   ![Based on component](./08.jpg)
+
+   ![](./09.jpg)
+
+   ![declerative](./10.jpg)
+
+   the react app keeps the user interface sync with data now let's call data (state)
+
+   ![state driven](./11.jpg)
+   and that is the whole reason why react called react in the first place (it reacts to state changes by rerendering the ui)
+
+   ![javascript library](./12.jpg)
+
+   ![Extremly popular](./13.jpg)
+
+   ![created by facebook](./14.jpg)
+
+   ![summary](./15.jpg)
+
+   React does all this by employing something called virtual dom, a fiber tree, one way data flow and many other techniques that we will study throughout this course
+
 ## (4) setting up a new react apps
 
-### (5) some questions
+### (5) Questions
 
 ###### is vuejs client side rendering or server side
 
@@ -70,3 +103,21 @@ To get the first feeling of how react keep user interface sync with state let's 
 - Vue.js is a JavaScript framework primarily designed for client-side rendering. This means that Vue.js applications run in the browser and generate the user interface on the client side. The browser downloads the necessary HTML, CSS, and JavaScript files and processes them to render the application.
 
 - However, Vue.js can also be used for server-side rendering (SSR) through a separate package called "Nuxt.js." Nuxt.js is a framework built on top of Vue.js that allows you to create universal applications with server-side rendering. With Nuxt.js, you can choose whether to render pages on the server or in the client, depending on your application's requirements. Server-side rendering can improve performance and provide better search engine optimization (SEO) compared to purely client-side rendering.
+
+###### angular, reactjs, vuejs lauched year
+
+###### ChatGPT
+
+Here are the launch years for Angular, React.js, and Vue.js:
+
+Angular:
+
+AngularJS (Angular 1): Released in 2010.
+Angular (Angular 2 and subsequent versions): Angular 2 was released in 2016.
+React.js:
+
+React.js: Initially released in 2013.
+Vue.js:
+
+Vue.js: Initially released in 2014.
+These frameworks and libraries have since evolved, with new versions and updates being released regularly to enhance functionality, performance, and developer experience. Keep in mind that the information provided here reflects the initial release years of these technologies.
