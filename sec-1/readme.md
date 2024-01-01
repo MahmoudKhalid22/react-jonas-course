@@ -1,6 +1,4 @@
-# lesson 01
-
-## Starting of the course
+## (1) Starting of the course
 
 #### A quick overview of the entire course in 4 sections that are
 
@@ -20,8 +18,6 @@ topics like reducers, performance optimization, spa, redux and modern redux tool
 
 all of learnt and apply it to a real world
 
-# lesson 02
-
-## Building a small app with reactjs as an introduction on sandbox
+## (2) Building a small app with reactjs as an introduction on sandbox
 
 [code link](https://codesandbox.io/p/sandbox/fetch-an-advice-33pz78?file=%2Fsrc%2FApp.js%3A22%2C43)

@@ -1,6 +1,6 @@
-### Why react
+## (1) Why react
 
-#### How websites were built in the past ? How we transitioned to the new way ? How that lead to the rise of frontend frameworks ?
+#### (a) How websites were built in the past ? How we transitioned to the new way ? How that lead to the rise of frontend frameworks ?
 
 Before 2010 , all websites are rendered by the server (Server side rendering)
 
@@ -25,7 +25,7 @@ But Server side rendering is actually making a comeback right now. so it's slowl
 
 ![Explanation](./01.jpg)
 
-##### How do we build single page applications ?
+##### (b) How do we build single page applications ?
 
 we don't want to build it with vanilla javascript because there are actually several problems when we build large scale applications with vanilla js
 
@@ -42,17 +42,26 @@ we don't want to build it with vanilla javascript because there are actually sev
 so at this point, you might as well just use
 a battle tested framework like react.
 
-##### Why do frontend frameworks exist ?
+##### (c) Why do frontend frameworks exist ?
 
 ![](./05.jpg)
 
-### what is react
+## (2) React vs. vanilla js
 
-### React vs. vanilla js
+To get the first feeling of how react keep user interface sync with state let's compare the advice app that we built in the first section with a vanilla js implementation and reactjs.
 
-### setting up a new react apps
+[codesandbox link](https://codesandbox.io/s/react-first-app-advice-52879f)
 
-### some questions
+1- They have very different philosophy
+2- every element in html you need to give it a class to select it by javascript while you don't need that with react
+3- you select elements manually by js and give give them conntent manually but you don't need that in react
+4- you might say this is small there is no need to react and this is true for small applications like this but as soon as we get just a little bit bigger it starts kind of getting out of control so you have to selecting tons of elements and updatign them manually and make a lot of code that with react we don't need this
+
+## (3) what is react
+
+## (4) setting up a new react apps
+
+### (5) some questions
 
 ###### is vuejs client side rendering or server side
 
