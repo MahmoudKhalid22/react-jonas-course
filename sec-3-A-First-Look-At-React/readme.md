@@ -94,13 +94,15 @@ To get the first feeling of how react keep user interface sync with state let's 
 
 ## (4) a new react apps
 
-### (a) setting up tools (vscode - nodejs - some extensions like(eslint - prettier - ....)) and adding some snippets
+##### (a) setting up tools (vscode - nodejs - some extensions like(eslint - prettier - ....)) and adding some snippets
 
-### (b) pure react
+##### (b) pure react
 
-### (c) pure react
+##### (c) Quick look at react official documentation
 
-### (d) pure react
+##### (d) Setting up a new react project: The options
+
+##### (e) Setting up a project with create react app
 
 ### (5) Questions
 
