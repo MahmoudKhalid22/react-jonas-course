@@ -155,6 +155,8 @@ Of course you need to learn react itself first.
 
 #### (e) Setting up a project with create react app
 
+cmd prompt: npx create-react-app name-of-the-app
+
 ### (5) Questions
 
 ###### is vuejs client side rendering or server side
