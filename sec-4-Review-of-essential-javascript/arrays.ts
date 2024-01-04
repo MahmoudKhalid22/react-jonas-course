@@ -42,6 +42,16 @@ console.log(adventureBooks);
 // ---------
 // THE ARRAY REDUCE METHOD
 // ---------
+// This method rules the two previous methods all
+// the reduce method is most veratile and most powerful of all arrays methods in javascript
+// it is called reduce because it reduces all of elements in the array to one element
+// the accumulator is the final value that we want the array to boil to
+// 0 is the starter value in this case but it can be an array an object ...
+const numberOfPagesOfAllBooks = booksData.reduce(
+  (acc, book) => acc + book.pages,
+  0
+);
+console.log(numberOfPagesOfAllBooks);
 
 // ---------
 // THE ARRAY SORT METHOD

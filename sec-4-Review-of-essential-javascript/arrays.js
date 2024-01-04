@@ -32,6 +32,11 @@ console.log(adventureBooks);
 // ---------
 // THE ARRAY REDUCE METHOD
 // ---------
+// This method rules the two previous methods all
+// the reduce method is most veratile and most powerful of all arrays methods in javascript
+// it is called reduce because it reduces all of elements in the array to one element
+const numberOfPagesOfAllBooks = booksData.reduce((acc, book) => acc + book.pages, 0);
+console.log(numberOfPagesOfAllBooks);
 // ---------
 // THE ARRAY SORT METHOD
 // ---------
