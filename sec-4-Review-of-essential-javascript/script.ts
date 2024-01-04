@@ -193,7 +193,7 @@ const updateBook = { ...book, moviePublicationDate: "2022-2-2", pages: 2000 };
 // you can add a new value to the updatedBook and override the old value also after spread operator
 // of course the spread of the object needs to be first
 
-console.log(updateBook);
+// console.log(updateBook);
 // ---------
 // REST OPERATOR
 // ---------
@@ -212,7 +212,7 @@ const summary: string = `${title} is a book`;
 const numberOfPages = `the number of pages is ${
   pages > 1000 ? "over a thousand" : "below a thousand"
 }`;
-console.log(numberOfPages);
+// console.log(numberOfPages);
 
 // ---------
 // ARROW FUNCTION
