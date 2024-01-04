@@ -228,9 +228,20 @@ const countWrong = book?.reviews.librarything?.reviewsCount || "no data";
 
 // I don't want 0 number but instead I want no data
 
-const count = book?.reviews.librarything?.reviewsCount ?? "no data";
+const count = book?.reviews?.librarything?.reviewsCount ?? "no data";
 console.log("countWrong ", countWrong); // the output is 'no data'
 
 console.log("count ", count); // the output is 0
 
 // this nullish qualising operator return no data when the first is null or undefined but not 0
+
+// ---------
+// OPTOINAL CHAINING
+// ---------
+
+// typescript auto does it in brief
+console.log(book?.reviews?.librarything?.reviewsCount);
+
+// ---------
+// THE ARRAY MAP METHOD
+// ---------
