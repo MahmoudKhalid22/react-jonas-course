@@ -94,15 +94,68 @@ To get the first feeling of how react keep user interface sync with state let's 
 
 ## (4) a new react app
 
-##### (a) setting up tools (vscode - nodejs - some extensions like(eslint - prettier - ....)) and adding some snippets
+#### (a) setting up tools
 
-##### (b) pure react
+(vscode - nodejs - some extensions like(eslint - prettier - ....)) and adding some snippets
 
-##### (c) Quick look at react official documentation
+#### (b) pure react
 
-##### (d) Setting up a new react project: The options
+created a new html page (in the pure react folder) [here](./01-pure-react/index.html) and showed us how react worked as a pure in html page and used useState and useEffect to display a clock in this page, check the code.
 
-##### (e) Setting up a project with create react app
+#### (c) Quick look at react official documentation
+
+navigating into documentation
+
+#### (d) Setting up a new react project: The options
+
+As we just learned in the real world we don't just write React apps in a single javascript file without any tooling.
+so let's now learn the options to setup our react app
+
+and now the two most important options:
+![](./16.jpg)
+
+- create-react-app
+
+a- was developed many years ago in order to make it really easy for developers to scaffold new react apps.
+
+b- all tools is already preconfigured out of the box specifically for React.
+so an app created with create-react-app automatically comes with a development server webpack
+for module bundling and of course important developer tools, which include a linter like ESLint,
+a code formatter like prettier, a testing library like Jest, and of course Fable for enabling the
+latest javascript features.
+
+c- The problem with this option (it was developed many years ago) and so it uses some slow and kind of outdated
+technologies under the hood, and in particular, the webpack bundler so the team behind create-react-app has stopped innovating and therefor right now the recommendation is to not use create-react-app for real world projects anymore.
+
+It's, however, still a perfectly fine way to get start quickly for tutorials, courses, or simple experiments.
+
+(So you might have read all the articles saying that create-react-app is dead and don't use it anymore) but that's only true for building real-apps. Because of the problem that large scale apps will face, like slow refresh times.
+
+- vite
+
+a- if you do want to build real world apps with react then vite is the perfect choice
+
+b- vite is quite different from create-react-app as it's basically simply a modern build tool so a bit like a modern webpack but which happens to also contain a starter template for setting up brand new React applications.
+
+c- the most annoying and painful is setting up ESLint to play nice with react. so that can be a bit of work and it can go wrong.
+
+d- The reason of using vite in the first place is that it is extremly fast to automatically refresh the page when the code changes which is called (Hot Module Replacement (HMR)) , also bundling is extremly fast too which for large scale applications can really make a difference because when you have to wait one or two seconds for each page to refresh it can become really annoying overtime. with vite each the page will update almost intstantly each time we save our code and want to see the changes on the screen.
+
+---
+
+you might have read in the officail documentation of react that the react team now advises developers to use react frameworks such as nextjs or remix to build new projects
+
+Frameworks like nextjs contain solutions like routing, data fetching, and server side rendering so things that react itself doesn't provide easily out of the box.
+
+So essentially a react framework is a framework built on top of the react library and which is going to make it easier to build apps.
+
+Of course you need to learn react itself first.
+
+![](./17.jpg)
+
+#### (e) Setting up a project with create react app
+
+cmd prompt: npx create-react-app name-of-the-app
 
 ### (5) Questions
 
@@ -131,3 +184,23 @@ Vue.js:
 
 Vue.js: Initially released in 2014.
 These frameworks and libraries have since evolved, with new versions and updates being released regularly to enhance functionality, performance, and developer experience. Keep in mind that the information provided here reflects the initial release years of these technologies.
+
+###### give me the difference between framework and library
+
+###### ChatGPT
+
+A framework and a library are both tools used in software development, but they serve different purposes and have distinct characteristics.
+
+Library:
+A library is a collection of pre-written code that developers can use in their programs to perform specific tasks or functions. Libraries typically consist of functions, classes, and procedures that you can call from your code to handle common tasks. The control flow of the program remains with the developer, who decides when and how to use the library's functions.
+
+For example, if you are building a web application and you use a library like jQuery, you can call its functions to manipulate the DOM (Document Object Model) easily. However, the overall structure and flow of your application are determined by you.
+
+Framework:
+A framework, on the other hand, is a more comprehensive and structured set of tools, libraries, and guidelines that provide a specific way to build and organize software. A framework dictates the overall architecture and flow of the application. Developers build their code within the framework, and the framework itself decides when and how to call the developer's code.
+
+Frameworks often include libraries, but the key distinction is that the control flow in a framework is inverted compared to a library. In a framework, the framework code calls the developer's code, whereas in a library, the developer's code calls the library.
+
+For instance, in web development, if you are using a framework like Django or Ruby on Rails, the framework handles many aspects of the application, such as routing, database interactions, and request handling. You provide specific code (such as defining routes or models), and the framework orchestrates the overall operation of the application.
+
+In summary, while both frameworks and libraries provide reusable code for developers, the primary difference lies in the control flow: libraries allow developers to call their code, while frameworks dictate the overall flow and call the developer's code.
