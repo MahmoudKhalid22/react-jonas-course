@@ -94,9 +94,13 @@ To get the first feeling of how react keep user interface sync with state let's 
 
 ## (4) a new react apps
 
-##### (a) setting up tools (vscode - nodejs - some extensions like(eslint - prettier - ....)) and adding some snippets
+##### (a) setting up tools
+
+(vscode - nodejs - some extensions like(eslint - prettier - ....)) and adding some snippets
 
 ##### (b) pure react
+
+created a new html page (in the pure react folder) [here](./01-pure-react/index.html) and showed us how react worked as a pure in html page and used useState and useEffect to display a clock in this page, check the code.
 
 ##### (c) Quick look at react official documentation
 
