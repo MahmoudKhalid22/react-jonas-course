@@ -1,4 +1,4 @@
-const data = [
+export const data = [
   {
     id: 1,
     title: "The Lord of the Rings",
@@ -135,11 +135,11 @@ const data = [
   },
 ];
 
-function getBooks() {
+export function getBooks() {
   return data;
 }
 
-function getBook(id: number) {
+export function getBook(id: number) {
   return data.find((d) => d.id === id);
 }
 
@@ -241,7 +241,3 @@ console.log("count ", count); // the output is 0
 
 // typescript auto does it in brief
 console.log(book?.reviews?.librarything?.reviewsCount);
-
-// ---------
-// THE ARRAY MAP METHOD
-// ---------
