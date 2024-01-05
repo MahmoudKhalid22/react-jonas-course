@@ -145,7 +145,7 @@ function getBook(id: number) {
 
 const books = getBooks();
 
-const book = getBook(5);
+const book = getBook(2);
 // const title = book?.title;
 // const author = book?.author;
 
@@ -223,3 +223,14 @@ const test = (str: string): string => str.split("_")[0];
 // ---------
 // SHORT CIRCUITING , LOGICAL OPERATORS; &&, ||
 // ---------
+
+const countWrong = book?.reviews.librarything?.reviewsCount || "no data";
+
+// I don't want 0 number but instead I want no data
+
+const count = book?.reviews.librarything?.reviewsCount ?? "no data";
+console.log("countWrong ", countWrong); // the output is 'no data'
+
+console.log("count ", count); // the output is 0
+
+// this nullish qualising operator return no data when the first is null or undefined but not 0

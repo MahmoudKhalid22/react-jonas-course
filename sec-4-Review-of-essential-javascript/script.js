@@ -1,4 +1,5 @@
 "use strict";
+var _a, _b, _c;
 const data = [
     {
         id: 1,
@@ -142,7 +143,7 @@ function getBook(id) {
     return data.find((d) => d.id === id);
 }
 const books = getBooks();
-const book = getBook(5);
+const book = getBook(2);
 // const title = book?.title;
 // const author = book?.author;
 // Reading data from a book object like this can be a little bit cumbersome, especially when we have
@@ -188,5 +189,12 @@ console.log(numberOfPages);
 // ---------
 // ARROW FUNCTION
 // ---------
-const test = (str) => str.split("_")[3];
-console.log(test("Mahmoud"));
+const test = (str) => str.split("_")[0];
+// ---------
+// SHORT CIRCUITING , LOGICAL OPERATORS; &&, ||
+// ---------
+const countWrong = ((_a = book === null || book === void 0 ? void 0 : book.reviews.librarything) === null || _a === void 0 ? void 0 : _a.reviewsCount) || "no data";
+// I don't want 0 number but instead I want no data
+const count = (_c = (_b = book === null || book === void 0 ? void 0 : book.reviews.librarything) === null || _b === void 0 ? void 0 : _b.reviewsCount) !== null && _c !== void 0 ? _c : "no data";
+console.log("countWrong ", countWrong);
+console.log("count ", count);
