@@ -57,6 +57,27 @@ console.log(numberOfPagesOfAllBooks);
 // THE ARRAY SORT METHOD
 // ---------
 
+// it's an algorithm and here we just explain how can we use it not how it works under the hood
+
+const arr = [1, 6, 32, 7, 9, 4, 77, 34];
+
+// const sortedD = arr.sort((a, b) => a - b);
+// it sorts an original array also not take a copy
+const sorted = arr.slice().sort((a, b) => a - b);
+// .slice() to take a copy of the original array so it isn't modified with sort method
+// console.log(arr, sorted);
+
+const sortedBooksByPages = booksData.slice().sort((a, b) => a.pages - b.pages);
+
+sortedBooksByPages.map((book) => console.log(book.title));
 // ---------
 // WORKING WITH IMMUTABLE ARRAYS
+// ---------
+
+// ---------
+// ASYNCHRONOUS JAVASCRIPT: PROMISES
+// ---------
+
+// ---------
+// ASYNC - AWAIT
 // ---------
