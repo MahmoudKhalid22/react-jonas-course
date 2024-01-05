@@ -68,7 +68,7 @@ console.log(newBooks);
 const booksAfterDelete = newBooks.filter((book) => book.id !== 6);
 console.log(booksAfterDelete);
 // 3) Update book object in the array
-const booksAfterUpdate = booksAfterDelete.map((book) => book.id === 1 ? {} : book);
+const booksAfterUpdate = booksAfterDelete.map((book) => book.id === 1 ? Object.assign(Object.assign({}, book), { pages: 1210 }) : book);
 console.log(booksAfterUpdate);
 // ---------
 // ASYNCHRONOUS JAVASCRIPT: PROMISES
