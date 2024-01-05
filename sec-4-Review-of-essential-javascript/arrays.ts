@@ -73,7 +73,30 @@ sortedBooksByPages.map((book) => console.log(book.title));
 // ---------
 // WORKING WITH IMMUTABLE ARRAYS
 // ---------
+// some arrays needs to be immutable (غــير قــابلة لـلـتـغــيــيــر)
 
+//so it's important to know how to delete elements , add elements without mutating the original array
+
+// 1) Add a book object to array
+const newBook = {
+  id: 6,
+  title: "الفردوس المفقود",
+  author: "أبو عبدالله",
+};
+
+const newBooks = [...booksData, newBook];
+console.log(newBooks);
+
+// 2) Delete book from array
+
+const booksAfterDelete = newBooks.filter((book) => book.id !== 6);
+console.log(booksAfterDelete);
+
+// 3) Update book object in the array
+const booksAfterUpdate = booksAfterDelete.map((book) =>
+  book.id === 1 ? { ...book, pages: 1210 } : book
+);
+console.log(booksAfterUpdate);
 // ---------
 // ASYNCHRONOUS JAVASCRIPT: PROMISES
 // ---------
