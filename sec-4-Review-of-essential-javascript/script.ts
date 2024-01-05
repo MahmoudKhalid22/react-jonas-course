@@ -151,6 +151,9 @@ const book = getBook(5);
 
 // Reading data from a book object like this can be a little bit cumbersome, especially when we have
 // a lot of properties we want to take out so that we have destructring
+// ---------
+// DESTRUCTRING OBJECTS
+// ---------
 
 const {
   title,
@@ -168,12 +171,22 @@ const {
 // const primaryGenre = genres[0];
 // const secondaryGenre = genres[1];
 
+// ---------
+// DESTRUCTRING ARRAYS
+// ---------
+
 const [firstEl, secondEl, ...otherGenres] = genres;
 
 // console.log(firstEl, secondEl, otherGenres);
 
+// ---------
+// SPREAD OPERTOR FOR ARRAYS
+// ---------
 const newGenre = [...genres, "epic fantasy"];
 // console.log(newGenre);
+// ---------
+// SPREAD OPERATOR FOR OBJECTS
+// ---------
 
 const updateBook = { ...book, moviePublicationDate: "2022-2-2", pages: 2000 };
 
@@ -181,5 +194,32 @@ const updateBook = { ...book, moviePublicationDate: "2022-2-2", pages: 2000 };
 // of course the spread of the object needs to be first
 
 console.log(updateBook);
+// ---------
+// REST OPERATOR
+// ---------
 
 // Rest operator is an argument of a function (typeof array) to make the function take any number of args
+
+// ---------
+// TEMPLATE LITERALS
+// ---------
+
+const summary: string = `${title} is a book`;
+
+// ---------
+// TERNARIES INSTEAD OF IF/ELSE
+// ---------
+const numberOfPages = `the number of pages is ${
+  pages > 1000 ? "over a thousand" : "below a thousand"
+}`;
+console.log(numberOfPages);
+
+// ---------
+// ARROW FUNCTION
+// ---------
+
+const test = (str: string): string => str.split("_")[0];
+
+// ---------
+// SHORT CIRCUITING , LOGICAL OPERATORS; &&, ||
+// ---------

@@ -147,16 +147,46 @@ const book = getBook(5);
 // const author = book?.author;
 // Reading data from a book object like this can be a little bit cumbersome, especially when we have
 // a lot of properties we want to take out so that we have destructring
+// ---------
+// DESTRUCTRING OBJECTS
+// ---------
 const { title, author, pages, publicationDate, genres, hasMovieAdaptation, } = book;
 // console.log(genres);
 // -------------------------------
 // const primaryGenre = genres[0];
 // const secondaryGenre = genres[1];
+// ---------
+// DESTRUCTRING ARRAYS
+// ---------
 const [firstEl, secondEl, ...otherGenres] = genres;
 // console.log(firstEl, secondEl, otherGenres);
+// ---------
+// SPREAD OPERTOR FOR ARRAYS
+// ---------
 const newGenre = [...genres, "epic fantasy"];
 // console.log(newGenre);
+// ---------
+// SPREAD OPERATOR FOR OBJECTS
+// ---------
 const updateBook = Object.assign(Object.assign({}, book), { moviePublicationDate: "2022-2-2", pages: 2000 });
 // you can add a new value to the updatedBook and override the old value also after spread operator
+// of course the spread of the object needs to be first
 console.log(updateBook);
+// ---------
+// REST OPERATOR
+// ---------
 // Rest operator is an argument of a function (typeof array) to make the function take any number of args
+// ---------
+// TEMPLATE LITERALS
+// ---------
+const summary = `${title} is a book`;
+// ---------
+// TERNARIES INSTEAD OF IF/ELSE
+// ---------
+const numberOfPages = `the number of pages is ${pages > 1000 ? "over a thousand" : "below a thousand"}`;
+console.log(numberOfPages);
+// ---------
+// ARROW FUNCTION
+// ---------
+const test = (str) => str.split("_")[3];
+console.log(test("Mahmoud"));
