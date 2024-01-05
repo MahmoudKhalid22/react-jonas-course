@@ -161,13 +161,25 @@ const {
   hasMovieAdaptation,
 }: any = book;
 
-console.log(genres);
+// console.log(genres);
 
 // -------------------------------
 
 // const primaryGenre = genres[0];
 // const secondaryGenre = genres[1];
 
-const [firstEl, secondEl] = genres;
+const [firstEl, secondEl, ...otherGenres] = genres;
 
-console.log(firstEl, secondEl);
+// console.log(firstEl, secondEl, otherGenres);
+
+const newGenre = [...genres, "epic fantasy"];
+// console.log(newGenre);
+
+const updateBook = { ...book, moviePublicationDate: "2022-2-2", pages: 2000 };
+
+// you can add a new value to the updatedBook and override the old value also after spread operator
+// of course the spread of the object needs to be first
+
+console.log(updateBook);
+
+// Rest operator is an argument of a function (typeof array) to make the function take any number of args
