@@ -67,15 +67,19 @@ function Header() {
   );
 }
 function Menu() {
+  const pizzas = pizzaData;
+  // const pizzas = null;
   return (
     <main className="menu">
       <h2>Our Menu</h2>
-      {pizzaData && (
+      {pizzas ? (
         <ul className="pizzas">
           {pizzaData.map((pizza) => (
             <Pizza pizzaObj={pizza} key={pizza.name} />
           ))}
         </ul>
+      ) : (
+        <p>We're still working on our menu, please come back later.</p>
       )}
     </main>
   );
@@ -98,22 +102,23 @@ function Footer() {
   const openHour = 8;
   const closedHour = 22;
 
-  const isOpen =
-    hour >= openHour && hour <= closedHour
-      ? "We're currently open"
-      : "We're currently closed";
+  const isOpen = hour >= openHour && hour <= closedHour ? true : false;
 
   console.log(isOpen);
 
   return (
     <footer className="footer">
-      {isOpen && (
+      {isOpen ? (
         <div className="order">
           <p>
             We're open until {closedHour}:00. Come visit us or order online{" "}
           </p>
           <button className="btn">Order</button>
         </div>
+      ) : (
+        <p>
+          We're happy to welcome you between {openHour} and {closedHour}
+        </p>
       )}
     </footer>
     // React behind the scenes
