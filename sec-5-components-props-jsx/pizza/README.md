@@ -64,7 +64,7 @@ is the way to pass data between components
 
 # photo of this project
 
-![](./17.png)
+![](./photo_of_the_first_project.png)
 
 # Section Summary
 
