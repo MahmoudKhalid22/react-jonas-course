@@ -37,3 +37,7 @@ so the answer is what gave us react components and jsx.
 the same is actually also true for most other modern front-end frameworks.
 
 ![](./10.jpg)
+
+# Props
+
+is the way to pass data between components

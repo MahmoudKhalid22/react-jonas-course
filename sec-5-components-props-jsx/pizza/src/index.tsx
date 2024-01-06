@@ -70,10 +70,31 @@ function Menu() {
   return (
     <main className="menu">
       <h2>Our Menu</h2>
-      <Pizza />
-      <Pizza />
-      <Pizza />
+      <Pizza
+        photo="pizzas/spinaci.jpg"
+        photoName="spinaci"
+        name="Pizza"
+        ingredients="Tomato and mozarella"
+      />
+      <Pizza
+        photo="pizzas/focaccia.jpg"
+        photoName="focaccia"
+        name="focaccia"
+        ingredients="Bread with italian olive oil and rosemary"
+      />
     </main>
+  );
+}
+
+function Pizza(props) {
+  return (
+    <div className="pizza">
+      <img src={props.photo} alt={props.photoName} />
+      <div>
+        <h3>{props.name}</h3>
+        <p>{props.ingredients}</p>
+      </div>
+    </div>
   );
 }
 
@@ -95,16 +116,6 @@ function Footer() {
     </footer>
     // React behind the scenes
     // React.createElement("footer", null, "We're currently open");
-  );
-}
-
-function Pizza() {
-  return (
-    <>
-      <img src="pizzas/spinaci.jpg" alt="pizza" />
-      <h3>Pizza</h3>
-      <p>Tomato and mozarella</p>
-    </>
   );
 }
 
