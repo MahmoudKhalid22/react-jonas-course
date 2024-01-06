@@ -56,4 +56,8 @@ is the way to pass data between components
 
 # The first coding challenge
 
-[link on codesandbox](https://codesandbox.io/p/sandbox/react-challenge-dev-profile-starter-ng0ghj?file=%2Fsrc%2Findex.js)
+[link on codesandbox](https://6w6625.csb.app/)
+
+# Rules of jsx
+
+![](./16.png)
