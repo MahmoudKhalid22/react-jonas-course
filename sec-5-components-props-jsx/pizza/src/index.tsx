@@ -85,15 +85,15 @@ function Menu() {
   );
 }
 
-function Pizza(props) {
-  if (props.pizzaObj.soldOut) return <h2>Sold Out</h2>;
+function Pizza({ pizzaObj }) {
+  if (pizzaObj.soldOut) return <h2>Sold Out</h2>;
 
   return (
     <div className="pizza">
-      <img src={props.pizzaObj.photoName} alt={props.photoName} />
+      <img src={pizzaObj.photoName} alt={pizzaObj.photoName} />
       <div>
-        <h3>{props.pizzaObj.name}</h3>
-        <p>{props.pizzaObj.ingredients}</p>
+        <h3>{pizzaObj.name}</h3>
+        <p>{pizzaObj.ingredients}</p>
       </div>
     </div>
   );
@@ -111,12 +111,7 @@ function Footer() {
   return (
     <footer className="footer">
       {isOpen ? (
-        <div className="order">
-          <p>
-            We're open until {closedHour}:00. Come visit us or order online{" "}
-          </p>
-          <button className="btn">Order</button>
-        </div>
+        <Order closedHour={closedHour} />
       ) : (
         <p>
           We're happy to welcome you between {openHour} and {closedHour}
@@ -127,6 +122,15 @@ function Footer() {
     // React.createElement("footer", null, "We're currently open");
   );
 }
+
+const Order = ({ closedHour }) => {
+  return (
+    <div className="order">
+      <p>We're open until {closedHour}:00. Come visit us or order online </p>
+      <button className="btn">Order</button>
+    </div>
+  );
+};
 
 // React v18
 const root = ReactDOM.createRoot(document.getElementById("root"));

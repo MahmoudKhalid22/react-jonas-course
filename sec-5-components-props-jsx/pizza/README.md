@@ -61,3 +61,7 @@ is the way to pass data between components
 # Rules of jsx
 
 ![](./16.png)
+
+# photo of this exercise
+
+![](./17.png)
