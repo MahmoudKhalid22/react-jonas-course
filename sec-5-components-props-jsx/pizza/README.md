@@ -41,3 +41,15 @@ the same is actually also true for most other modern front-end frameworks.
 # Props
 
 is the way to pass data between components
+
+- we use props to pass data from parent component to child component
+
+![](./11.jpg)
+
+![](./12.jpg)
+
+![](./13.jpg)
+
+![](./14.jpg)
+
+![](./15.jpg)
