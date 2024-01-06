@@ -2,6 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 
+interface PizzaObject {
+  name: string;
+  ingredients: string;
+  price: number;
+  photoName: string;
+  soldOut: boolean;
+}
+
 const pizzaData = [
   {
     name: "Focaccia",
@@ -80,8 +88,8 @@ function Menu() {
             from our stone oven, all organic, all delicious.
           </p>
           <ul className="pizzas">
-            {pizzaData.map((pizza) => (
-              <Pizza pizzaObj={pizza} key={pizza.name} />
+            {pizzaData.map((pizza: PizzaObject) => (
+              <Pizza key={pizza.name} pizzaObj={pizza} />
             ))}
           </ul>
         </>
@@ -93,14 +101,15 @@ function Menu() {
 }
 
 function Pizza({ pizzaObj }) {
-  if (pizzaObj.soldOut) return <h2>Sold Out</h2>;
+  // if (pizzaObj.soldOut) return <h2>Sold Out</h2>;
 
   return (
-    <div className="pizza">
+    <div className={`pizza ${pizzaObj.soldOut ? "sold-out" : ""}`}>
       <img src={pizzaObj.photoName} alt={pizzaObj.photoName} />
       <div>
         <h3>{pizzaObj.name}</h3>
         <p>{pizzaObj.ingredients}</p>
+        <span>{pizzaObj.soldOut ? "SOLD-OUT" : pizzaObj.price}</span>
       </div>
     </div>
   );
