@@ -103,13 +103,31 @@ function App(){
         test.name = "ali";
         setTest({name:"ali"}) // GOOD PRACTICE
     }
-
     return (
         <>
             <button onClick={handleStep}>HANDLE</button>
         </>
     )
-
-
 }
 ```
+
+## The Mechanics of state in react
+
+- Remember that we learned in react that we don't manipulate the DOM directly when we want update the components view. So react is declarative, not imperative.
+  So if that the case how do we update the component on the screen whenever some data changes or whenever we need to respond to some event like a click ?
+  Now, we already know that the answer of this question is (state).
+  but we are trying to derive it from first principles.
+  we need to understand another fundamental React principle, which is the fact that React updates a component view by re-rendering the entire component whenever the underlying data changes.
+
+  for now, just now re-rendering basically means that react calls the component function again, so each time the component is rendered.
+  So conceptually we can imagine this as React removing the entire view and replacing it with a new one each time a re-render needs to happen.
+
+  Now, React preserves the component state throughout re-renders, and so even though a component can be re-rendered time and time again, the state will not be reset (unless) the component disappears from the UI entirely, which is what we call unmounting.
+
+  ![](./05.png)
+
+  ![](./06.png)
+
+  ![](./07.png)
+
+  ![](./08.png)
