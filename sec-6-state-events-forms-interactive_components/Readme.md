@@ -147,3 +147,31 @@ function handler(){
     setStep((prev) => !prev) // you pass a function into setter function taking an argument of previous state value and the body of the function is the new value
 }
 ```
+
+# a few more important thoughts about state
+
+1- each component really has, manages its own state even if we render the same component multiple times on one page, each of these component instances will operate independently from all the other ones.
+example
+
+![](./09.png)
+
+so state really is isolated inside of each component.
+
+Now, if we analyze everything that we just learned about state, we can come to the conclusion that we can basically think of the entire application view, so the entire user interface, as a function of state.
+Or in other words, the entire UI is always a representation of all the current states in all components.
+And, taking this idea even one step further, a react application is all about changing state over time, and of course, also correctly displaying that state at all times. And this is really what the declerative approach to building user interfaces is all about.
+
+So, instead of viewing a UI as explicit DOM manipulations, with state, we now view a UI as a reflection of data changing over time.
+Reflection of data using state, jsx, event handlers.
+
+So, we describe the UI, React does the rest.
+
+![](./10.png)
+
+Now this might be sound a lit philosophical at this point but as you become more and more experience in building react apps and working with state.
+
+# A few guidelines on how to useState in practice
+
+![](./11.png)
+
+finally there is one common mistake that many beginners make which is to use state for every single variable they need in the component but that really is not necessary. so, don't use state for variables that should not trigger a re-render because that will just cause unneccearry re-renders which can cause performance issues so it's very common to need some varibales that are not state. so for those, you can choose regular varibales such as const, let,..
