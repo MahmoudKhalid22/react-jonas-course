@@ -64,4 +64,52 @@ remember! state is how react keeps the user interface in sync with data. we chan
 
 ![summary](./04.png)
 
-## why does we need it ?
+## few things about the state
+
+useState called a hook in react. we identify hook because we start with use keyword.
+so useEffect, useReducer, useCallback are react hooks. we will talk more about that later.
+
+But now you need to know is that we can only call hooks like useState on the top level of the function.
+not inside if statement or inside another function or inside a loop.
+Another thing => is that we should only update the state using setter function not manually.
+
+```
+function App(){
+
+    // this is where you call hooks in react (this is the top level of the function)
+
+    return (
+        // jsx
+    )
+}
+```
+
+## some bad practices
+
+React is immutable so don't update the state manually
+
+```
+function App(){
+    let [step,setStep] = useState(1);
+    let [test,setTest] = useState({name:"mahmoud"});
+
+
+    function handleStep(){
+        // set step manually this is the bad practice and will not update in the browser because react has no way to know this is for updating the step therefor it provided us with useState so you must update it with setStep
+        step = step + 1;
+    }
+    function handleTest(){
+        // this will re-render the ui and work correctly but this is the bad practice and you should never do it because this is not react concept
+        test.name = "ali";
+        setTest({name:"ali"}) // GOOD PRACTICE
+    }
+
+    return (
+        <>
+            <button onClick={handleStep}>HANDLE</button>
+        </>
+    )
+
+
+}
+```
