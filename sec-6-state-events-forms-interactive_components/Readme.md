@@ -41,6 +41,7 @@ but the second approach is very redundent so we use the first one
 1- it is basically data that a component can hold over time, and we use it for information that a component needs to remember throughout its lifecycle.
 Therefore, we can think of state as being the memory of the component.
 examples
+
 ![](./01.png)
 
 what all these pieces of state have in common is that in the application, the user can easily change these values.
@@ -48,6 +49,7 @@ for example, when they read a notification, the count will go down by one, or wh
 And therefore each of these components needs to hold data over time, so over the lifecycle of the application.
 
 so that pieces of information is a (piece of state)
+
 ![](./02.png)
 
 2- let's now move on to the most important aspect of state.
