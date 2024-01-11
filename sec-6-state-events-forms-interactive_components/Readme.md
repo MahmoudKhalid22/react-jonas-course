@@ -133,3 +133,17 @@ function App(){
   ![](./07.png)
 
   ![](./08.png)
+
+# Demo of the first app
+
+[link on codesandbox](https://rvvdc5.csb.app/)
+
+# update state based on the current state
+
+```
+const [step, setStep] = useState(false);
+
+function handler(){
+    setStep((prev) => !prev) // you pass a function into setter function taking an argument of previous state value and the body of the function is the new value
+}
+```
