@@ -175,3 +175,13 @@ Now this might be sound a lit philosophical at this point but as you become more
 ![](./11.png)
 
 finally there is one common mistake that many beginners make which is to use state for every single variable they need in the component but that really is not necessary. so, don't use state for variables that should not trigger a re-render because that will just cause unneccearry re-renders which can cause performance issues so it's very common to need some varibales that are not state. so for those, you can choose regular varibales such as const, let,..
+
+# Very important question that is asked in interviews ( What is the difference between props and states )
+
+- we already know at this point the difference but let's make a crystal clear.
+
+![](./10.png)
+
+# A challenge with useState (very wonderful)
+
+[live demo on sandbox](https://cjcyq8.csb.app/)
