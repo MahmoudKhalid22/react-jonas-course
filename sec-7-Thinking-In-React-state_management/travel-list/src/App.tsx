@@ -7,24 +7,34 @@ interface ItemInterface {
   packed: boolean;
 }
 
-// const initialItems: ItemInterface[] = [
-//   { id: 1, description: "Passports", quantity: 2, packed: false },
-//   { id: 2, description: "Socks", quantity: 12, packed: false },
-//   { id: 3, description: "Socks", quantity: 12, packed: true },
-// ];
-
 function App() {
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState<ItemInterface[]>([]);
 
   const handleItems = (item: never): void => {
     setItems([...items, item]);
   };
+
+  const handleDeleteItem = (id: number) => {
+    setItems(items.filter((item: ItemInterface) => item?.id !== id));
+  };
+
+  const handleToggleItem = (id: number) => {
+    const newItems = items.map((item: ItemInterface) =>
+      item?.id === id ? { ...item, packed: !item.packed } : item
+    );
+    setItems([...newItems]);
+  };
+
   return (
     <div className="app">
       <Logo />
       <Form onAddItem={handleItems} />
-      <PackList items={items} />
-      <Stats />
+      <PackList
+        items={items}
+        onDeleteItem={handleDeleteItem}
+        onToggleItem={handleToggleItem}
+      />
+      <Stats items={items} />
     </div>
   );
 }
@@ -73,33 +83,55 @@ function Form({ onAddItem }: any) {
     </>
   );
 }
-function PackList({ items }: any) {
+function PackList({ items, onDeleteItem, onToggleItem }: any) {
   return (
     <div className="list">
       <ul>
         {items.map((item: ItemInterface) => (
-          <Item item={item} key={item.id} />
+          <Item
+            item={item}
+            key={item.id}
+            onDeleteItem={onDeleteItem}
+            onToggleItem={onToggleItem}
+          />
         ))}
       </ul>
     </div>
   );
 }
 
-function Item({ item }: any) {
+function Item({ item, onDeleteItem, onToggleItem }: any) {
   return (
     <li>
+      <input
+        type="checkbox"
+        value={item.packed}
+        onChange={() => onToggleItem(item.id)}
+      />
       <span style={item.packed ? { textDecoration: "line-through" } : {}}>
         {item.description} {item.quantity}
       </span>
-      <button>❌</button>
+      <button onClick={() => onDeleteItem(item.id)}>❌</button>
     </li>
   );
 }
 
-function Stats() {
+function Stats({ items }: any) {
+  if (!items.length) {
+    return (
+      <em className="stats">Start adding some items to your packing list 👝</em>
+    );
+  }
+  const allItems = items.length;
+  const packedItems = items.filter((item: ItemInterface) => item.packed).length;
+  const percentage = Math.round((packedItems / allItems) * 100);
   return (
     <footer className="stats">
-      <em>💼 You have X items on your list, and you already packed X (X%)</em>
+      <em>
+        {+percentage === 100
+          ? `You got everything! Ready to go ✈️`
+          : `💼 You have ${allItems} items on your list, and you already packed ${packedItems} ${+percentage}%)`}
+      </em>
     </footer>
   );
 }

@@ -80,6 +80,10 @@ How do we give the total component access to the coupon state because in react w
 
 - Simply review this graph one more time.
 
+## Deriving state
+
+![](./09.png)
+
 ---
 
 # Questions
