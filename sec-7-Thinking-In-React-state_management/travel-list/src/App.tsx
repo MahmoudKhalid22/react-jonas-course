@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Logo from "./Logo";
-import Form from "./Form";
-import PackList from "./PackList";
-import { ItemInterface } from "./DAO";
-import Stats from "./Stats";
+import Form from "./components/Form";
+import { ItemInterface } from "./utils/DAO";
+import Logo from "./components/Logo";
+import PackList from "./components/PackList";
+import Stats from "./components/Stats";
 
 function App() {
   const [items, setItems] = useState<ItemInterface[]>([]);

@@ -1,5 +1,5 @@
 import React from "react";
-import { ItemInterface } from "./DAO";
+import { ItemInterface } from "../utils/DAO";
 
 function Stats({ items }: any) {
   if (!items.length) {

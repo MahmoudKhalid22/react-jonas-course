@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ItemInterface } from "./DAO";
+import { ItemInterface } from "../utils/DAO";
 import Item from "./Item";
 
 function PackList({ items, onDeleteItem, onToggleItem, onClearList }: any) {
