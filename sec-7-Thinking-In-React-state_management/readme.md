@@ -52,3 +52,70 @@ in our small apps we never had to worry about state mangement at all. we simply 
 ### When and where we should use state ?
 
 ![](./05.jpg)
+
+# Thinking about state and Lifting state up
+
+# Questions
+
+#### user
+
+- what is type never in typescript
+
+#### ChatGPT
+
+In TypeScript, the never type represents a value that will never occur. It is often used in scenarios where a function is expected to throw an exception, loop indefinitely, or have some other behavior that prevents it from returning a normal value.
+
+Here are a few common use cases for the never type:
+
+Functions That Always Throw:
+
+typescript
+
+```
+function throwError(message: string): never {
+throw new Error(message);
+}
+```
+
+Infinite Loops:
+
+typescript
+```
+function infiniteLoop(): never {
+while (true) {
+// Do something indefinitely
+}
+}
+```
+Type Guards:
+The never type is often used in type guards to represent cases that should never happen. For example, if you have narrowed down the type of a variable in all possible branches, TypeScript can infer the type as never in an unreachable code path.
+
+typescript
+Copy code
+```
+function exampleTypeGuard(value: string | number): string {
+if (typeof value === "string") {
+return value;
+} else if (typeof value === "number") {
+return value.toFixed(2);
+} else {
+// In this branch, TypeScript knows that value can never be a string or number
+// This function will never return, so its return type is 'never'
+throw new Error("Unexpected type!");
+}
+}
+```
+Unreachable Code:
+If TypeScript determines that a code path is unreachable, it may infer the type as never.
+
+typescript
+```
+function unreachableCode(flag: boolean): string {
+if (flag) {
+return "Flag is true";
+} else {
+throw new Error("This code path is unreachable");
+}
+}
+```
+Using never can be a way to help TypeScript understand the control flow in your code and make more accurate type inferences. It is especially useful in situations where certain values or branches should never occur during runtime.
