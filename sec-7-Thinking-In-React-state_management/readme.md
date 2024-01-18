@@ -55,6 +55,33 @@ in our small apps we never had to worry about state mangement at all. we simply 
 
 # Thinking about state and Lifting state up
 
+if the sibling component wants the props so you can't pass props to it because it is not the child so you need to lift the state up to the parent and the function that setState you will pass it to the first component and the data to the second component
+
+### Reviewing "Lifting up state"
+
+Let's now look at example and some diagrams to really understand how it works and why it is so important.
+
+As an example let's use checkout part of udemy interface
+
+![](./06.png)
+
+we started with promotion component where the user can input coupon codes that will then be added to a list of applied component so it sounds like we need code of coupons right here so that coupon state is now local in the promotion component.
+next we set out to build Total component but here we also realize that the Total component also needs to access the coupon state.
+Otherwise, without knowing which coupons have to been applied, how would the total component know, what discounts to apply, and what price to display ? and so here we encounter a problem.
+How do we give the total component access to the coupon state because in react we have one way data flow, so data can only flow down from parent to child not sibling. therefore we can't pass a prop from a component to sibling component. So we need to share the state betweeen the components that further up or sideaway in the component tree. (Lifting it up) But what does that mean, and how exactly does it work ?
+
+##### Lifting state up simply means to place some state in the component that is a parent of both components that need the piece of state in question
+
+- so in this example we place the state in the Checkout component instead of promotion component and then give the both children components access to the state passing it down as props.
+
+- and if we want to update the state (was in the promotion component but now in checkout component) simply pass setState as a prop in this component and update it. ( we can call this technique <inverse date flow> or <Child to Parent Communicatoin>)
+
+- Note :- it's not truly passing up but just passing down a setter function and use it to update the parent state
+
+- Simply review this graph one more time.
+
+---
+
 # Questions
 
 #### user
@@ -80,6 +107,7 @@ throw new Error(message);
 Infinite Loops:
 
 typescript
+
 ```
 function infiniteLoop(): never {
 while (true) {
@@ -87,11 +115,13 @@ while (true) {
 }
 }
 ```
+
 Type Guards:
 The never type is often used in type guards to represent cases that should never happen. For example, if you have narrowed down the type of a variable in all possible branches, TypeScript can infer the type as never in an unreachable code path.
 
 typescript
 Copy code
+
 ```
 function exampleTypeGuard(value: string | number): string {
 if (typeof value === "string") {
@@ -105,10 +135,12 @@ throw new Error("Unexpected type!");
 }
 }
 ```
+
 Unreachable Code:
 If TypeScript determines that a code path is unreachable, it may infer the type as never.
 
 typescript
+
 ```
 function unreachableCode(flag: boolean): string {
 if (flag) {
@@ -118,4 +150,5 @@ throw new Error("This code path is unreachable");
 }
 }
 ```
+
 Using never can be a way to help TypeScript understand the control flow in your code and make more accurate type inferences. It is especially useful in situations where certain values or branches should never occur during runtime.
