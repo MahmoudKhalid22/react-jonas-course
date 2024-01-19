@@ -103,6 +103,10 @@ to recap
 
 ![](./10.png)
 
+## challenge #2
+
+[link on codesandbox](https://codesandbox.io/p/sandbox/loving-sutherland-wk55rs?file=%2Fsrc%2FApp.js%3A50%2C38)
+
 ---
 
 # Questions
