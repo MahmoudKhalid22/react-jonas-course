@@ -65,6 +65,10 @@ As an example let's use checkout part of udemy interface
 
 ![](./06.png)
 
+![](./07.png)
+
+![](./08.png)
+
 we started with promotion component where the user can input coupon codes that will then be added to a list of applied component so it sounds like we need code of coupons right here so that coupon state is now local in the promotion component.
 next we set out to build Total component but here we also realize that the Total component also needs to access the coupon state.
 Otherwise, without knowing which coupons have to been applied, how would the total component know, what discounts to apply, and what price to display ? and so here we encounter a problem.
@@ -87,6 +91,17 @@ How do we give the total component access to the coupon state because in react w
 ## challenge #1 (Accordion component)
 
 [live demo and source code on codesandbox](https://codesandbox.io/p/sandbox/white-fog-6n47rx)
+
+## The children prop
+
+it is a prop that each react component auto receives. and the value of the children prop is exactly what is between opening and closing tag of the parent component. See the step challenge example
+[the example](./steps/src/App.tsx)
+
+with this we gain a new important tool, that makes our component really reusable.
+
+to recap
+
+![](./10.png)
 
 ---
 
