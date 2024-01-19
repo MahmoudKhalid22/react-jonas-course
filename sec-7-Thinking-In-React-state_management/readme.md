@@ -88,7 +88,7 @@ How do we give the total component access to the coupon state because in react w
 
 ![](./09.png)
 
-## challenge #1 (Accordion component)
+## Exercise #1 (Accordion component)
 
 [live demo and source code on codesandbox](https://codesandbox.io/p/sandbox/white-fog-6n47rx)
 
@@ -103,9 +103,13 @@ to recap
 
 ![](./10.png)
 
-## challenge #2
+## Exercise #2
 
 [link on codesandbox](https://codesandbox.io/p/sandbox/loving-sutherland-wk55rs?file=%2Fsrc%2FApp.js%3A50%2C38)
+
+## Challenge #1
+
+[link on codesandbox](https://codesandbox.io/p/sandbox/jolly-goldstine-rqqlz4?file=%2Fsrc%2FApp.js%3A39%2C21)
 
 ---
 
