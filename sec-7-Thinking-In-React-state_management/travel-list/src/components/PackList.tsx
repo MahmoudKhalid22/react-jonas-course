@@ -4,6 +4,7 @@ import Item from "./Item";
 
 function PackList({ items, onDeleteItem, onToggleItem, onClearList }: any) {
   const [sortBy, setSortBy] = useState("input");
+  
 
   let sortedItems;
   if (sortBy === "input") sortedItems = items;
