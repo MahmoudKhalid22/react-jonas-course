@@ -70,3 +70,13 @@ in the project.
 in the project [here](./usepopcorn/src/App.tsx)
 
 ## Using composition to make a reusable box
+
+in code [here](./usepopcorn//src/App.tsx)
+
+## Passing Elements as props alternative to children
+
+```
+  <Box element={<ListMovies movies={movies} />} />
+```
+
+it is an alternative way to children but children way is preferable so we keep it in the code

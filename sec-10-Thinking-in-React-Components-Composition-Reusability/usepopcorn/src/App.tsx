@@ -69,6 +69,7 @@ export default function App() {
       </Navbar>
 
       <main className="main">
+        {/* <Box element={<ListMovies movies={movies} />} /> */}
         <Box>
           <ListMovies movies={movies} />
         </Box>
