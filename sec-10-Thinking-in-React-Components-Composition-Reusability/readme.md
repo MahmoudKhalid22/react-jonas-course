@@ -48,3 +48,11 @@ Something like a framework that helps create a new components from bigger compon
 ![](./05.png)
 
 ![](./06.png)
+
+## Componenet Categories
+
+![](./07.png)
+
+naturally because we shouldn't force our compoenents into one of these categories.
+
+## Props Drilling
