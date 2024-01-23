@@ -1,8 +1,13 @@
 import { useState } from "react";
 import { Data, TempWatchedData } from "./utils/DAO";
 import Navbar from "./components/Navbar";
-import BoxLeft from "./components/BoxLeft";
-import BoxRight from "./components/BoxRight";
+import Box from "./components/Box";
+import Logo from "./components/NavbarComponents/Logo";
+import Searchbar from "./components/NavbarComponents/Searchbar";
+import Item from "./components/NavbarComponents/Item";
+import ListMovies from "./components/BoxContent/ListMovies";
+import Summary from "./components/BoxContent/Summary";
+import List from "./components/BoxContent/List";
 
 const tempMovieData: Data[] = [
   {
@@ -57,11 +62,20 @@ export default function App() {
 
   return (
     <>
-      <Navbar movies={movies} />
+      <Navbar>
+        <Logo />
+        <Searchbar />
+        <Item movies={movies} />
+      </Navbar>
 
       <main className="main">
-        <BoxLeft movies={movies} />
-        <BoxRight watched={watched} />
+        <Box>
+          <ListMovies movies={movies} />
+        </Box>
+        <Box>
+          <Summary watched={watched} />
+          <List watched={watched} />
+        </Box>
       </main>
     </>
   );

@@ -56,3 +56,17 @@ Something like a framework that helps create a new components from bigger compon
 naturally because we shouldn't force our compoenents into one of these categories.
 
 ## Props Drilling
+
+in the project.
+
+## Component Composition
+
+![](./08.png)
+
+![](./09.png)
+
+## Fixing Prop drilling with composition
+
+in the project [here](./usepopcorn/src/App.tsx)
+
+## Using composition to make a reusable box
