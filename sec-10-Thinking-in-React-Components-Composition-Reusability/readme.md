@@ -93,7 +93,7 @@ So let's now shortly look at how to think about props.
 
 So first of all, as we starting on our component, we should get into the mindset that any component is always created by someone, and always consumed by someone. so think in terms of there being a creator and consumer of a component, so different entities, even if it's just yourself.
 
-So basically the creator is the person buildingn a component, and defining what props the component can accept. While the consumer uses the component somewhere in the application by specifying values for the props.
+So basically the creator is the person building a component, and defining what props the component can accept. While the consumer uses the component somewhere in the application by specifying values for the props.
 
 Now the reason for separation between creator and consumer, even if you're just working on your own, is that if we have this mindset, we can think of the component props as the public API of the component.
 So as a component creator / when we choose what props the consumer is allowed to pass in, we are essentially defining the public interface for our component and, at the same time, we're choosing how much complexity of the component we want to expose to the consumer of the API because the component is basically just an abstraction. so we're encapsulating a part of the UI and associated logic into a component, and allow consumers to interact with that component via props.
@@ -103,3 +103,9 @@ when we decide about what props to allow in a component, we need to find a good 
 ![](./10.png)
 
 ## Improving reusability with props
+
+we're going to make our component really flexible and reusable by defining a nice public api for consumers to use it.
+so right now our component is quite unflexible [here](https://qn7ljr.csb.app/) and therefore, not really reusable.
+so if we imagine that we want to reuse the component in many other applications or may be even publish it to NPM to share it with all react developers around the world, then they will probably not find this component very useful right now. So , those developers or in other words, those consumers, they will probably want to define things like ( the colors of the start or maybe the sizes of the stars and text ) in order to make this component fit into their own applications and so what we're going to do now is to try to define a good public api for this component just as we learned before. And so, by doing that, we will try to find that balance of using too few props and using too little props so that the component also doesn't get way too complex.
+
+now look at the difference between [the new version](https://8lztnq.csb.app/) that is reusable and the old version that only the creator can benefit [old version](https://qn7ljr.csb.app/)
