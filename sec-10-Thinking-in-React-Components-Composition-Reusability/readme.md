@@ -109,3 +109,12 @@ so right now our component is quite unflexible [here](https://qn7ljr.csb.app/) a
 so if we imagine that we want to reuse the component in many other applications or may be even publish it to NPM to share it with all react developers around the world, then they will probably not find this component very useful right now. So , those developers or in other words, those consumers, they will probably want to define things like ( the colors of the start or maybe the sizes of the stars and text ) in order to make this component fit into their own applications and so what we're going to do now is to try to define a good public api for this component just as we learned before. And so, by doing that, we will try to find that balance of using too few props and using too little props so that the component also doesn't get way too complex.
 
 now look at the difference between [the new version](https://codesandbox.io/p/sandbox/reusable-star-component-the-new-version-8lztnq?file=%2Fsrc%2FApp.js) that is reusable and the old version that only the creator can benefit [old version](https://qn7ljr.csb.app/)
+
+## Prototype
+
+Adding type checkign to the component's props using prototypes.
+with prototypes we can basically specify the types of value that we expect the consumer of the component to pass in for each of the props.
+for example, we can specify in our component that maxRating must be a number and nothing else. this is type checking.
+we use typescript intead to handle this issues, but react has built-in prototypes and we will use it for our component.
+
+check the code on sandbox (here)[https://codesandbox.io/p/sandbox/reusable-star-component-the-new-version-8lztnq]
