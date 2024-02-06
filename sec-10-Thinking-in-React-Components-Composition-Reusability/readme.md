@@ -103,3 +103,7 @@ when we decide about what props to allow in a component, we need to find a good 
 ![](./10.png)
 
 ## Improving reusability with props
+
+## Prototypes
+
+## Challenge #1
