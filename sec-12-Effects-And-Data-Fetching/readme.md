@@ -45,3 +45,24 @@ What actually is an effect and how is it different from event handler function ?
 ## Adding async await function , adding a loading state, handling errors look at the code,
 
 ## the useEffect dependency array
+
+![](./04.png)
+
+![](./05.png)
+
+![](./06.png)
+
+effects are executed after renders (this is not wrong, and also not the full story).
+so let's look at the timeline of events that happen as component renders and re-renders.
+so as we already know the whole process starts with mounting the component instance, after that
+the result of rendering is commited to the dom and finally the dom changes painted onto the screen by the browser.
+So where do effects come into play here ?
+Well, effects are actually only executed after the browser has painted the dom onto the screen. So not immediately after render, that's why we say that effects run asynchronously after the render has been painted to the screen.
+
+and the reason why effects works this way is that effects may contain long time processes such as fetching data.
+
+an important sequence of the fact that effects don't run during the render is that if an effect sets state, then the second additional render will be required to display the UI correctly.
+
+so you should not overuse effects
+
+![](./07.png)
