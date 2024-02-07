@@ -3,7 +3,7 @@ import { TempWatchedData } from "../../utils/DAO";
 
 function List({ watched }: any) {
   return (
-    <ul className="list">
+    <ul className="list list-movies">
       {watched.map((movie: TempWatchedData) => (
         <li key={movie.imdbID}>
           <img src={movie.Poster} alt={`${movie.Title} poster`} />

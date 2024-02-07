@@ -57,21 +57,35 @@ const tempWatchedData: TempWatchedData[] = [
 ];
 
 const apiKey: string = "24a23ab4";
-const movie: string = "interstellar";
+const movie: string = "300";
 export default function App() {
   const [movies, setMovies] = useState([]);
   const [watched, setWatched] = useState(tempWatchedData);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<boolean | string>(false);
 
   useEffect(function () {
     const getMovies = async () => {
-      setLoading(true);
-      const res = await fetch(
-        `http://www.omdbapi.com/?i=tt3896198&apikey=${apiKey}&s=${movie}`
-      );
-      setLoading(false);
-      const data = await res.json();
-      setMovies(data.Search);
+      try {
+        setLoading(true);
+        const res = await fetch(
+          `http://www.omdbapi.com/?i=tt3896198&apikey=${apiKey}&s=${movie}`
+        );
+
+        if (!res.ok) throw Error("Failed to fetch");
+
+        const data = await res.json();
+
+        if (data.Response === "False") return setError(data.Error);
+
+        setMovies(data.Search);
+      } catch (err: any) {
+        console.log(err);
+
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
     };
     getMovies();
   }, []);
@@ -86,9 +100,10 @@ export default function App() {
 
       <main className="main">
         {/* <Box element={<ListMovies movies={movies} />} /> */}
-        {loading ? (
-          <Loader />
-        ) : (
+
+        {loading && !error && <Loader />}
+        {error && <Error message={error} />}
+        {!error && !loading && (
           <Box>
             <ListMovies movies={movies} />
           </Box>
@@ -104,4 +119,8 @@ export default function App() {
 
 function Loader() {
   return <p className="loader">Loading...</p>;
+}
+
+function Error({ message }: any) {
+  return <p className="error">{message}</p>;
 }

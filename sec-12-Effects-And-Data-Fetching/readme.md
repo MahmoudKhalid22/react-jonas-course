@@ -42,4 +42,6 @@ What actually is an effect and how is it different from event handler function ?
 
 ![](./03.png)
 
-## Adding async await function , adding a loading state look at the code
+## Adding async await function , adding a loading state, handling errors look at the code,
+
+## the useEffect dependency array
