@@ -5,7 +5,7 @@ export interface Data {
   Poster: string;
 }
 export interface TempWatchedData extends Data {
-  runtime: number;
+  Runtime: string;
   imdbRating: number;
   userRating: number;
   // Released: number;

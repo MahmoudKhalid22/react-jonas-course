@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Data, TempWatchedData } from "./utils/DAO";
+import { Data, TempWatchedData } from "./utils/types";
 import Navbar from "./components/Navbar";
 import Box from "./components/Box";
 import Logo from "./components/NavbarComponents/Logo";
@@ -40,7 +40,7 @@ const tempWatchedData: TempWatchedData[] = [
     Year: "2010",
     Poster:
       "https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg",
-    runtime: 148,
+    Runtime: "148 min",
     imdbRating: 8.8,
     userRating: 10,
   },
@@ -50,7 +50,7 @@ const tempWatchedData: TempWatchedData[] = [
     Year: "1985",
     Poster:
       "https://m.media-amazon.com/images/M/MV5BZmU0M2Y1OGUtZjIxNi00ZjBkLTg1MjgtOWIyNThiZWIwYjRiXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_SX300.jpg",
-    runtime: 116,
+    Runtime: "116 min",
     imdbRating: 8.5,
     userRating: 9,
   },

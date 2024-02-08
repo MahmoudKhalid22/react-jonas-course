@@ -1,5 +1,15 @@
 import React from "react";
-import { TempWatchedData } from "../../utils/DAO";
+import { Movie, TempWatchedData } from "../../utils/types";
+
+function extractDuration(durationStr: string): number | null {
+  const durationNumber: number = parseInt(durationStr.match(/\d+/)?.[0] || "");
+
+  if (!isNaN(durationNumber)) {
+    return durationNumber;
+  } else {
+    return null;
+  }
+}
 
 function Summary({ watched }: any) {
   const average = (arr: any) =>
@@ -12,10 +22,10 @@ function Summary({ watched }: any) {
     watched.map((movie: TempWatchedData) => movie.imdbRating)
   );
   const avgUserRating = average(
-    watched.map((movie: TempWatchedData) => movie.userRating)
+    watched.map((movie: Movie) => movie.userRating)
   );
   const avgRuntime = average(
-    watched.map((movie: TempWatchedData) => movie.runtime)
+    watched.map((movie: Movie) => extractDuration(movie.Runtime))
   );
   return (
     <div className="summary">
@@ -27,11 +37,11 @@ function Summary({ watched }: any) {
         </p>
         <p>
           <span>⭐️</span>
-          <span>{avgImdbRating}</span>
+          <span>{Number(avgImdbRating).toFixed(2)}</span>
         </p>
         <p>
           <span>🌟</span>
-          <span>{avgUserRating}</span>
+          <span>{Number(avgUserRating).toFixed(2)}</span>
         </p>
         <p>
           <span>⏳</span>

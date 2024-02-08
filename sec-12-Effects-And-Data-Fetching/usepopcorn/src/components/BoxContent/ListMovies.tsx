@@ -1,5 +1,5 @@
 import React from "react";
-import { Data } from "../../utils/DAO";
+import { Data } from "../../utils/types";
 
 function ListMovies({ movies, onSetMovie }: any) {
   return (

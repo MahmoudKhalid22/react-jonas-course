@@ -1,12 +1,25 @@
 import React, { useEffect, useState } from "react";
-import { Movie } from "../utils/DAO";
+import { Movie } from "../utils/types";
 import { Loader } from "../App";
 import StarRating from "./StarRating";
 const apiKey: string = "24a23ab4";
 
-function MovieDetails({ selectedId, onCloseMovie }: any) {
+function MovieDetails({ selectedId, onCloseMovie, onAddWatched }: any) {
   const [movie, setMovie] = useState<Movie>();
   const [loading, setLoading] = useState<boolean>(false);
+  const [rating, setRating] = useState<number | null>(null);
+
+  const handleAdd = (movie: any) => {
+    const newWatchedMovie = {
+      imdbID: selectedId,
+      Title: movie?.Title,
+      Year: movie?.Year,
+      Poster: movie?.Poster,
+      imdbRating: Number(movie?.imdbRating),
+      Runtime: movie?.Runtime,
+    };
+    onAddWatched(newWatchedMovie);
+  };
   useEffect(() => {
     const movieDetails = async () => {
       setLoading(true);
@@ -15,7 +28,6 @@ function MovieDetails({ selectedId, onCloseMovie }: any) {
       );
       setLoading(false);
       const data = await res.json();
-      console.log(data);
 
       setMovie(data);
     };
@@ -36,7 +48,7 @@ function MovieDetails({ selectedId, onCloseMovie }: any) {
             <div className="details-overview">
               <h2>{movie?.Title}</h2>
               <p>
-                {movie?.Released} &bull; {movie?.runtime}
+                {movie?.Released} &bull; {movie?.Runtime}
               </p>
               <p>{movie?.genre}</p>
               <p>
@@ -47,7 +59,12 @@ function MovieDetails({ selectedId, onCloseMovie }: any) {
           </header>
           <section>
             <div className="rating">
-              <StarRating maxRating={10} size={24} />
+              <StarRating maxRating={10} size={24} onSetRating={setRating} />
+              {rating && rating > 0 && (
+                <button className="btn-add" onClick={() => handleAdd(movie)}>
+                  + Add to list
+                </button>
+              )}
             </div>
             <p>
               <em>{movie?.plot}</em>
