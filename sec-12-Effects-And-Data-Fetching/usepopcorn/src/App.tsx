@@ -57,44 +57,58 @@ const tempWatchedData: TempWatchedData[] = [
 ];
 
 const apiKey: string = "24a23ab4";
-const movie: string = "300";
 export default function App() {
   const [movies, setMovies] = useState([]);
   const [watched, setWatched] = useState(tempWatchedData);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<boolean | string>(false);
+  const [query, setQuery] = useState<string>("");
 
-  useEffect(function () {
-    const getMovies = async () => {
-      try {
-        setLoading(true);
-        const res = await fetch(
-          `http://www.omdbapi.com/?i=tt3896198&apikey=${apiKey}&s=${movie}`
-        );
+  const handleQuery = (value: string) => {
+    console.log(value);
 
-        if (!res.ok) throw Error("Failed to fetch");
+    setQuery(value);
+  };
 
-        const data = await res.json();
+  useEffect(
+    function () {
+      const getMovies = async () => {
+        try {
+          setLoading(true);
+          setError("");
+          const res = await fetch(
+            `http://www.omdbapi.com/?i=tt3896198&apikey=${apiKey}&s=${query}`
+          );
 
-        if (data.Response === "False") return setError(data.Error);
+          if (!res.ok) throw Error("Failed to fetch");
 
-        setMovies(data.Search);
-      } catch (err: any) {
-        console.log(err);
+          const data = await res.json();
 
-        setError(err.message);
-      } finally {
-        setLoading(false);
+          if (data.Response === "False") return setError(data.Error);
+
+          setMovies(data.Search);
+        } catch (err: any) {
+          setError(err.message);
+        } finally {
+          setLoading(false);
+        }
+      };
+      if (query.length < 3) {
+        setMovies([]);
+        setError("");
+        return;
       }
-    };
-    getMovies();
-  }, []);
+
+      getMovies();
+    },
+    [query]
+  );
 
   return (
     <>
       <Navbar>
         <Logo />
-        <Searchbar />
+        <Searchbar onHandleQuery={handleQuery} />
         <Item movies={movies} />
       </Navbar>
 
