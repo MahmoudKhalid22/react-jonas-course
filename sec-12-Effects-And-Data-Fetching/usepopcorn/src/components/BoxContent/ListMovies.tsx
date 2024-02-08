@@ -1,11 +1,11 @@
 import React from "react";
 import { Data } from "../../utils/DAO";
 
-function ListMovies({ movies }: any) {
+function ListMovies({ movies, onSetMovie }: any) {
   return (
     <ul className="list list-movies">
       {movies?.map((movie: Data) => (
-        <li key={movie.imdbID}>
+        <li key={movie.imdbID} onClick={() => onSetMovie(movie.imdbID)}>
           <img src={movie.Poster} alt={`${movie.Title} poster`} />
           <h3>{movie.Title}</h3>
           <div>

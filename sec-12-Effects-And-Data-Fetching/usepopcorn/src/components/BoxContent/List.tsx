@@ -1,7 +1,7 @@
 import React from "react";
 import { TempWatchedData } from "../../utils/DAO";
 
-function List({ watched }: any) {
+function List({ watched, onSetMovie }: any) {
   return (
     <ul className="list list-movies">
       {watched.map((movie: TempWatchedData) => (
