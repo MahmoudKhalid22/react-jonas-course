@@ -1,9 +1,7 @@
 import React from "react";
 import { Movie } from "../../utils/types";
 
-function List({ watched, onSetMovie }: any) {
-  console.log(watched);
-
+function List({ watched, onSetMovie, onDeleteWatched }: any) {
   return (
     <ul className="list list-movies">
       {watched.map((movie: Movie) => (
@@ -17,12 +15,18 @@ function List({ watched, onSetMovie }: any) {
             </p>
             <p>
               <span>🌟</span>
-              <span>{Number(movie.userRating).toFixed(2)}</span>
+              <span>{Number(movie.userRating)}</span>
             </p>
             <p>
               <span>⏳</span>
               <span>{movie.Runtime}</span>
             </p>
+            <button
+              onClick={() => onDeleteWatched(movie.imdbID)}
+              className="btn-delete"
+            >
+              ➖
+            </button>
           </div>
         </li>
       ))}

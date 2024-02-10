@@ -13,11 +13,13 @@ function extractDuration(durationStr: string): number | null {
 
 function Summary({ watched }: any) {
   const average = (arr: any) =>
-    arr.reduce(
-      (acc: number, cur: number, i: number, arr: TempWatchedData[]) =>
-        acc + cur / arr.length,
-      0
-    );
+    arr
+      .reduce(
+        (acc: number, cur: number, i: number, arr: TempWatchedData[]) =>
+          acc + cur / arr.length,
+        0
+      )
+      .toFixed(2);
   const avgImdbRating = average(
     watched.map((movie: TempWatchedData) => movie.imdbRating)
   );
@@ -25,7 +27,7 @@ function Summary({ watched }: any) {
     watched.map((movie: Movie) => movie.userRating)
   );
   const avgRuntime = average(
-    watched.map((movie: Movie) => extractDuration(movie.Runtime))
+    watched.map((movie: Movie) => extractDuration(movie.Runtime)?.toFixed(2))
   );
   return (
     <div className="summary">

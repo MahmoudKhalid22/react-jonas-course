@@ -4,10 +4,22 @@ import { Loader } from "../App";
 import StarRating from "./StarRating";
 const apiKey: string = "24a23ab4";
 
-function MovieDetails({ selectedId, onCloseMovie, onAddWatched }: any) {
+function MovieDetails({
+  selectedId,
+  onCloseMovie,
+  onAddWatched,
+  watched,
+}: any) {
   const [movie, setMovie] = useState<Movie>();
   const [loading, setLoading] = useState<boolean>(false);
   const [rating, setRating] = useState<number | null>(null);
+
+  const isRated = watched.some((item: Movie) => item.imdbID === selectedId);
+  console.log(isRated);
+
+  const watchedUserRating = watched?.find(
+    (item: Movie) => item?.imdbID === selectedId
+  )?.userRating;
 
   const handleAdd = (movie: any) => {
     const newWatchedMovie = {
@@ -17,9 +29,11 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched }: any) {
       Poster: movie?.Poster,
       imdbRating: Number(movie?.imdbRating),
       Runtime: movie?.Runtime,
+      userRating: Number(rating),
     };
     onAddWatched(newWatchedMovie);
   };
+
   useEffect(() => {
     const movieDetails = async () => {
       setLoading(true);
@@ -59,13 +73,27 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched }: any) {
           </header>
           <section>
             <div className="rating">
-              <StarRating maxRating={10} size={24} onSetRating={setRating} />
-              {rating && rating > 0 && (
-                <button className="btn-add" onClick={() => handleAdd(movie)}>
-                  + Add to list
-                </button>
+              {!isRated ? (
+                <>
+                  <StarRating
+                    maxRating={10}
+                    size={24}
+                    onSetRating={setRating}
+                  />
+                  {rating && rating > 0 && (
+                    <button
+                      className="btn-add"
+                      onClick={() => handleAdd(movie)}
+                    >
+                      + Add to list
+                    </button>
+                  )}
+                </>
+              ) : (
+                <p>you rated this movie with {watchedUserRating} ⭐</p>
               )}
             </div>
+
             <p>
               <em>{movie?.plot}</em>
             </p>

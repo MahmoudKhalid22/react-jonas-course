@@ -65,6 +65,7 @@ export default function App() {
   const [error, setError] = useState<boolean | string>(false);
   const [query, setQuery] = useState<string>("");
   const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [rating, setRating] = useState<number | null>(null);
 
   const handleQuery = (value: string) => {
     setQuery(value);
@@ -85,9 +86,12 @@ export default function App() {
       // If the movie is not already watched, add it to the watched list
       setWatched((prevWatched) => [...prevWatched, movie]);
     }
+    handleCloseMovie();
   };
 
-  console.log(watched);
+  const handleDeleteWatched = (id: string) => {
+    setWatched(watched.filter((item: Movie) => item.imdbID !== id));
+  };
 
   useEffect(
     function () {
@@ -147,11 +151,17 @@ export default function App() {
               selectedId={selectedId}
               onCloseMovie={handleCloseMovie}
               onAddWatched={handleAddWatched}
+              onSetMovieRating={setRating}
+              watched={watched}
             />
           ) : (
             <>
-              <Summary watched={watched} />
-              <List watched={watched} />
+              <Summary watched={watched} rating={rating} />
+              <List
+                watched={watched}
+                rating={rating}
+                onDeleteWatched={handleDeleteWatched}
+              />
             </>
           )}
         </Box>
