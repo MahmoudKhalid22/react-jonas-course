@@ -35,6 +35,11 @@ function MovieDetails({
   };
 
   useEffect(() => {
+    if (!movie?.Title) return;
+    document.title = `Movie | ${movie?.Title}`;
+  }, [movie]);
+
+  useEffect(() => {
     const movieDetails = async () => {
       setLoading(true);
       const res = await fetch(
