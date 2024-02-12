@@ -96,7 +96,7 @@ this not only makes each effect much easier to understand but also easier to cle
 
 ### Questions
 
-##### race condition
+### race condition
 
 Race conditions can occur if the application logic depends on the order of responses. For example, if the application expects to receive responses in a particular order and performs actions based on those responses, receiving responses out of order could result in unpredictable behavior.
 
@@ -107,8 +107,8 @@ Race conditions are most commonly associated with computer science and programmi
 
 Race conditions are considered a common issue for multithreaded applications.
 
-##### clousers in javascript
+### clousers in javascript
 
-```
+In JavaScript, closure means that an inner function can access variables that belong to the outer function. This applies even when the execution of the outer function has already finished.
 
-```
+![](10.png)
