@@ -66,3 +66,49 @@ an important sequence of the fact that effects don't run during the render is th
 so you should not overuse effects
 
 ![](./07.png)
+
+## useEffect cleanup function
+
+remember that after the last effect run, the title of the page in the browser tab was set to the last name of the movie you choosed even you didn't need it (unmounted component).
+
+so, once we unmount component we would probably like the title to return to the original text which was simply usePopcorn.
+
+so we keep the page title is synchronized with the application so after the component unmount.
+so we do that by returning a so called cleanup function from the effect and in this case that simply a function that sets title back to the original
+
+![](./08.png)
+
+![09](./09.png)
+
+it runs in two ocassions :-
+first before the effect is executed again to cleanup the results of the previous side effect
+second after the component has unmounted in order to give us the opportunity to reset the side effect that we created if that's necessary.
+
+so, we do need cleanup function whenever the side effect keeps happening after the component has been re-rendered or unmounted for example, when doing http request on the effect and if the component if re-renderd after the first request is still running, a new second request will be fired off, this may create a bug called (race condition) more on that below 👇🏾
+so, it's a good idea to cancel the request in a cleanup function whenever the component re-renders or unmounts.
+
+more example on the pic (09)
+
+#### One important rule about effects
+
+each effect should only do one thing, so if you need multiple effects in your components, which is completely normal just use multiple useEffect hooks.
+this not only makes each effect much easier to understand but also easier to cleanup by using cleanup function.
+
+### Questions
+
+##### race condition
+
+Race conditions can occur if the application logic depends on the order of responses. For example, if the application expects to receive responses in a particular order and performs actions based on those responses, receiving responses out of order could result in unpredictable behavior.
+
+// generally
+A race condition is an undesirable situation that occurs when a device or system attempts to perform two or more operations at the same time, but because of the nature of the device or system, the operations must be done in the proper sequence to be done correctly.
+
+Race conditions are most commonly associated with computer science and programming. They occur when two computer program processes, or threads, attempt to access the same resource at the same time and cause problems in the system.
+
+Race conditions are considered a common issue for multithreaded applications.
+
+##### clousers in javascript
+
+```
+
+```
