@@ -94,6 +94,41 @@ more example on the pic (09)
 each effect should only do one thing, so if you need multiple effects in your components, which is completely normal just use multiple useEffect hooks.
 this not only makes each effect much easier to understand but also easier to cleanup by using cleanup function.
 
+## Cleaning up data fetching to get rid of race condition (if exists)
+
+there are three problems with many requests at the same time :-
+first => slow each of them down
+second => we will end up downloading way too much data because w don't interested in the data for other queries. (affects on your internet Gigas in big apps)
+third (the most important one) => race condition, if the previous requests arrived after the last one (which we need) it will be rendered on the state (and that what we don't want)
+
+so we need to cleanup the requests so that as soon as a new request is fired off, the previous one will stop
+
+we need to do that a native browser api, called abort controller ( more about it 👇🏾 )
+and we will use it in our cleanup function
+
+give a look to the code [here](./usepopcorn/src/App.tsx)
+
+so if at some point in the future, if you're doing http requests and effects like this make sure to cleanup after your fetch requests, in case that you have a situation where many requests can be fired off very rapidly, one after another, which exactly the situation that we have here.
+
+you note that in code
+
+````
+useEffect(function(){
+    const fetchFunc = async () => {
+        try{
+        const controller = new AbortController();
+        await fetch('url',{signal: controller.signal}) // this will throw an error auto which has name "AbortError" so you need to check if it is don't set the error state with it and also setError('')
+        setError("");
+        }catch(err){
+            if(err.name !== "AbortError") setError(err.message)
+        }
+    }
+    return function(){
+        controller.abort();
+    }
+})
+```
+
 ### Questions
 
 ### race condition
@@ -112,3 +147,4 @@ Race conditions are considered a common issue for multithreaded applications.
 In JavaScript, closure means that an inner function can access variables that belong to the outer function. This applies even when the execution of the outer function has already finished.
 
 ![](10.png)
+````
