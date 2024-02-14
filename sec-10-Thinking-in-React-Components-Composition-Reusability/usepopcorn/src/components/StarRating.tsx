@@ -4,7 +4,7 @@ import Star from "./Star";
 function StarRating({ maxRating = 5, color = "#fcc419", number = 48 }): void {
   const [rating, setRating] = useState<number>(0);
   const [tempRating, setTempRating] = useState(0);
-  const handleTempRating = (number) => {
+  const handleTempRating = (number: any) => {
     console.log(number);
 
     setTempRating(number);

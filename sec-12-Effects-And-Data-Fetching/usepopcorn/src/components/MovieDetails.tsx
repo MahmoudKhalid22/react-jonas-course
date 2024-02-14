@@ -15,7 +15,7 @@ function MovieDetails({
   const [rating, setRating] = useState<number | null>(null);
 
   const isRated = watched.some((item: Movie) => item.imdbID === selectedId);
-  console.log(isRated);
+  // console.log(isRated);
 
   const watchedUserRating = watched?.find(
     (item: Movie) => item?.imdbID === selectedId
@@ -33,6 +33,20 @@ function MovieDetails({
     };
     onAddWatched(newWatchedMovie);
   };
+
+  useEffect(
+    function () {
+      function callback(e: any) {
+        if (e.code === "Escape") onCloseMovie();
+      }
+      document.addEventListener("keydown", callback);
+
+      return function () {
+        document.removeEventListener("keydown", callback);
+      };
+    },
+    [onCloseMovie]
+  );
 
   useEffect(() => {
     if (!movie?.Title) return;

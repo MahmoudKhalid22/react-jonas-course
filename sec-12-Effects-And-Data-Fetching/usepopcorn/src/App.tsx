@@ -124,6 +124,7 @@ export default function App() {
         return;
       }
 
+      handleCloseMovie();
       getMovies();
 
       return function () {

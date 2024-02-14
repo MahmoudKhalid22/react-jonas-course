@@ -112,7 +112,7 @@ so if at some point in the future, if you're doing http requests and effects lik
 
 you note that in code
 
-````
+```
 useEffect(function(){
     const fetchFunc = async () => {
         try{
@@ -127,6 +127,24 @@ useEffect(function(){
         controller.abort();
     }
 })
+```
+
+## Listen to keypress event listner
+
+to listen to keypress we need to globally listen to keypress event. so we will attach the event listener to the entire document. we will deal directly with DOM and this is clearly the side effect so we need a another effect
+
+note that we just need it globally (over the component level) so we need to touch DOM but if you need some event that attached to some elements so you won't need to deal directly with DOM
+
+But now if you did some tests such as log something after this event you will see that the event listener is executed more and more times as if it's an accumulator and the more you listen to the event the more it's executed more and more times and you will get dozens of logs after listening one time.
+
+And the reason for that each time that the new movie details compoonent mounts, a new event listener is added to the document. So each time that the effect is executed, it will basically add one more event listener to the document. (it might become memory problem in larger applications with hundreds or thousands of event listeners)
+
+so we need to cleanup the event listener.
+
+```
+return function(){
+    document.removeEventListener("keydown",the_same_prev_function);
+}
 ```
 
 ### Questions
@@ -147,4 +165,7 @@ Race conditions are considered a common issue for multithreaded applications.
 In JavaScript, closure means that an inner function can access variables that belong to the outer function. This applies even when the execution of the outer function has already finished.
 
 ![](10.png)
-````
+
+```
+
+```
