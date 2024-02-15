@@ -165,7 +165,3 @@ Race conditions are considered a common issue for multithreaded applications.
 In JavaScript, closure means that an inner function can access variables that belong to the outer function. This applies even when the execution of the outer function has already finished.
 
 ![](10.png)
-
-```
-
-```
