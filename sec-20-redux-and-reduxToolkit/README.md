@@ -53,6 +53,14 @@ Let's focus on the action again, so in the real world when we use Redux we usual
 
 Just note that this is optional and not a feature of Redux it's just how we build real world apps.
 
+## lesson 3
+
+Creating a reducer bank account ( look at the code ) [here](./redux-intro/src/store.ts)
+
+## lesson 4
+
+Create the redux store ( look at the code )
+
 ## Questions
 
 #### q) the difference between redux and useContext
@@ -79,3 +87,7 @@ Redux shines in these scenarios:
 Large applications with extensive global state: When your app has numerous interconnected UI state pieces that need to be shared and updated across various components.
 Complex state updates: If your state updates involve complex logic or dependencies between different parts of the state.
 Need for advanced features: When you require features like middleware for asynchronous operations, time-travel debugging, or complex state normalization techniques.
+
+## Vocabulary
+
+crystal clear -> واضحة وضوح الشمس
