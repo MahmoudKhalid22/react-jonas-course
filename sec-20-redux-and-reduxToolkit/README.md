@@ -61,6 +61,26 @@ Creating a reducer bank account ( look at the code ) [here](./redux-intro/src/st
 
 Create the redux store ( look at the code )
 
+## lesson 5
+
+Function Creators
+
+## lesson 6
+
+Adding more state: Customer
+
+## lesson 7
+
+Professional Redux File Structure: State Slices
+
+## lesson 8
+
+Back to react, connecting our redux file to react
+
+## lesson 9
+
+Dispatching actions from our react app
+
 ## Questions
 
 #### q) the difference between redux and useContext
