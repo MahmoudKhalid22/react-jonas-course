@@ -1,14 +1,10 @@
 import { createStore } from "redux";
 
-interface DepositAction {
-  type: "account/deposit";
+interface NormalAction {
+  type: string;
   payload: number;
 }
 
-interface WithdrawAction {
-  type: "account/withdraw";
-  payload: number;
-}
 interface Payload {
   amount: number;
   purpose: string;
@@ -19,9 +15,6 @@ interface RequestLoanAction {
   payload: Payload;
 }
 
-interface PayLoanAction {
-  type: "account/payLoan";
-}
 interface State {
   balance: number;
   loan: number;
@@ -34,11 +27,7 @@ const initialState: State = {
   purpose: "",
 };
 
-type Action =
-  | DepositAction
-  | WithdrawAction
-  | RequestLoanAction
-  | PayLoanAction;
+type Action = RequestLoanAction | NormalAction;
 
 function reducer(state: State = initialState, action: Action): State {
   switch (action.type) {
@@ -49,9 +38,9 @@ function reducer(state: State = initialState, action: Action): State {
     case "account/requestLoan":
       return {
         ...state,
-        loan: action.payload.amount,
-        balance: state.balance + action.payload.amount,
-        purpose: action.payload.purpose,
+        loan: (action.payload as Payload)?.amount,
+        balance: state.balance + (action.payload as Payload)?.amount,
+        purpose: (action.payload as Payload)?.purpose,
       };
     case "account/payLoan":
       return { ...state, balance: state.balance - state.loan, purpose: "" };
@@ -62,21 +51,48 @@ function reducer(state: State = initialState, action: Action): State {
 
 const store = createStore(reducer);
 
-console.log("hello redux");
+// console.log("hello redux");
 
-store.dispatch({ type: "account/deposit", payload: 700 });
+// store.dispatch({ type: "account/deposit", payload: 700 });
+// console.log(store.getState());
+// store.dispatch({ type: "account/withdraw", payload: 500 });
+// console.log(store.getState());
+
+// store.dispatch({ type: "account/payLoan", payload: 2000 });
+// console.log(store.getState());
+
+// store.dispatch({
+//   type: "account/requestLoan",
+//   payload: { amount: 5000, purpose: "Buy a car" },
+// });
+// console.log(store.getState());
+
+// store.dispatch({ type: "account/payLoan", payload: 5000 });
+// console.log(store.getState());
+
+function deposit(amount: number): NormalAction {
+  return { type: "account/deposit", payload: amount };
+}
+function withdraw(amount: number): NormalAction {
+  return { type: "account/withdraw", payload: amount };
+}
+function requestLoan(amount: number, purpose: string): RequestLoanAction {
+  return {
+    type: "account/requestLoan",
+    payload: { amount, purpose },
+  };
+}
+function payLoan(amount: number): NormalAction {
+  return { type: "account/payLoan", payload: amount };
+}
+
+store.dispatch(deposit(300));
 console.log(store.getState());
-store.dispatch({ type: "account/withdraw", payload: 500 });
+store.dispatch(withdraw(500));
 console.log(store.getState());
 
-store.dispatch({ type: "account/payLoan", payload: 2000 });
+store.dispatch(requestLoan(500, "buy a car"));
 console.log(store.getState());
 
-store.dispatch({
-  type: "account/requestLoan",
-  payload: { amount: 5000, purpose: "Buy a car" },
-});
-console.log(store.getState());
-
-store.dispatch({ type: "account/payLoan", payload: 5000 });
+store.dispatch(payLoan(700));
 console.log(store.getState());
