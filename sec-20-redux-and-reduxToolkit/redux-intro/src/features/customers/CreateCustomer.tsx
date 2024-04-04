@@ -1,10 +1,24 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { createCustomer } from "./customerSlice";
+import { CustomerAction } from "../../types";
+import { Dispatch } from "redux";
 
 function Customer() {
-  const [fullName, setFullName] = useState("");
-  const [nationalId, setNationalId] = useState("");
+  const [fullName, setFullName] = useState<string>("");
+  const [nationalId, setNationalId] = useState<string>("");
+  const [error, setError] = useState<boolean>(false);
 
-  function handleClick() {}
+  const dispatch: Dispatch<CustomerAction> = useDispatch();
+
+  function handleClick() {
+    setError(false);
+    if (!fullName || !nationalId) {
+      setError(true);
+      return;
+    }
+    dispatch(createCustomer(fullName, nationalId));
+  }
 
   return (
     <div>
@@ -13,6 +27,7 @@ function Customer() {
         <div>
           <label>Customer full name</label>
           <input
+            className={error ? "error" : ""}
             value={fullName}
             onChange={(e) => setFullName(e.target.value)}
           />
@@ -20,6 +35,7 @@ function Customer() {
         <div>
           <label>National ID</label>
           <input
+            className={error ? "error" : ""}
             value={nationalId}
             onChange={(e) => setNationalId(e.target.value)}
           />
