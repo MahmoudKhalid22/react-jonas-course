@@ -27,3 +27,8 @@ export interface CustomerAction {
   type: string;
   payload: CustomerState;
 }
+
+export interface States {
+  customer: CustomerState;
+  account: AccountState;
+}
