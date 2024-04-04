@@ -53,33 +53,51 @@ Let's focus on the action again, so in the real world when we use Redux we usual
 
 Just note that this is optional and not a feature of Redux it's just how we build real world apps.
 
-## lesson 3
+## lesson 3 ( Creating a reducer bank account ( look at the code ) [here](./redux-intro/src/store.ts) )
 
-Creating a reducer bank account ( look at the code ) [here](./redux-intro/src/store.ts)
+## lesson 4 ( Create the redux store ( look at the code )
 
-## lesson 4
+## lesson 5 ( Function Creators )
 
-Create the redux store ( look at the code )
+## lesson 6 ( Adding more state: Customer )
 
-## lesson 5
+## lesson 7 ( Professional Redux File Structure: State Slices )
 
-Function Creators
+## lesson 8 ( Back to react, connecting our redux file to react )
 
-## lesson 6
+## lesson 9 ( Dispatching actions from our react app )
 
-Adding more state: Customer
+## lesson 10 ( Legacy way of connecting component to redux )
 
-## lesson 7
+## lesson 11 ( Redux middleware and Thunks )
 
-Professional Redux File Structure: State Slices
+Let's now take a look at how we can extend the functionality of redux by using something called middleware.
 
-## lesson 8
+![](./08.png)
 
-Back to react, connecting our redux file to react
+so let's say that we wanted to make an asynchronous call to some API so where we could actually do that in redux?
 
-## lesson 9
+- We can definitely not make the API call inside a reducer because reducers need to be pure functions with no side effects, so by itself, a Redux store doesn't know anything about performing asynchronous logic like this.
+  It only know how to synchronously dispatch actions and update the state, Therefore, any async operation like that API call need to happen outside a reducer.
 
-Dispatching actions from our react app
+- Q) So instead, should we maybe fetch the data inside the component and then dispatch an action to the store with that received data ?
+
+- A) Well, that is actually possible but it's not the ideal solution and <u>the reason for that is that </u> we usually want to keep our component clean and free of data fetching and we also want our important data fetching logic encapsulated somehwhere, so all in one place and not have it spread all over the application, therefore fetching data inside components like we have been doing all this time, is not ideal
+
+- Q) But if not in the store and not in the components, then where do we perform async actions ?
+
+- A) Well, that's where Middleware comes into action. So in Redux, Middleware is basically a function that sits between the dispatching and the store. This means that middleware allows developers to run some code after dispatching an action, but before that action reaches the reducer in the store. And therefore, this is the perfect place for our asynchronous API calls, as well as other operations, such as setting timers, logging to the console, or even pausing and cancelling the action altogether.
+
+So in essence, Middleware is the go-to place for side effects in the Redux Cycle
+
+We can write middleware function oursleves, but usually, we just use some third party package. and the case of async operation ( the most popular middleware in Redux is called Redux Thunk )
+
+let's analyze what happens
+1- the action will no longer be immediately dispatched.
+2- it first get into the middleware ( into the thunk in this case )
+3- then we can start fetching some data inside the thunk and it could also be some other async operations
+4- once the data arrives we will place it into the action payload
+5- the action get dispatched into the store and the state get updated
 
 ## Questions
 
@@ -111,3 +129,5 @@ Need for advanced features: When you require features like middleware for asynch
 ## Vocabulary
 
 crystal clear -> واضحة وضوح الشمس
+thunks -> دوال تأجيلية
+defer -> تأجيل
