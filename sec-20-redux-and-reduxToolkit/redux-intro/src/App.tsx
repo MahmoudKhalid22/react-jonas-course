@@ -8,6 +8,8 @@ import { States } from "./types";
 function App() {
   const name = useSelector((data: States) => data.customer.fullName);
 
+  console.log(name);
+
   return (
     <div>
       <h1>🏦 The React-Redux Bank ⚛️</h1>

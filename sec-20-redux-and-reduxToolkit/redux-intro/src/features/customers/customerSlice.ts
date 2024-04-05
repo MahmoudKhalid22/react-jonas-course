@@ -11,13 +11,16 @@ export default function customerReducer(
   action: CustomerAction
 ): CustomerState {
   switch (action.type) {
-    case "customer/createCustomer":
+    case "customer/createCustomer": {
+      console.log(action.payload);
+
       return {
         ...state,
         fullName: action.payload.fullName,
         nationalID: action.payload.nationalID,
         createdAt: action.payload.createdAt,
       };
+    }
     case "customer/updateName":
       return {
         ...state,
