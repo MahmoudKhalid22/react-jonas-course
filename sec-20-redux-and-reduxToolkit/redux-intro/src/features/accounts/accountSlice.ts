@@ -5,6 +5,7 @@ const initialState: AccountState = {
   balance: 0,
   loan: 0,
   purpose: "",
+  isLoading: false,
 };
 export type Action = RequestLoanAction | NormalAction;
 
@@ -14,6 +15,7 @@ const accountSlice = createSlice({
   reducers: {
     deposit(state, action) {
       state.balance += action.payload;
+      state.isLoading = false;
     },
     withdraw(state, action) {
       state.balance -= action.payload;
@@ -28,6 +30,9 @@ const accountSlice = createSlice({
       state.balance -= state.loan;
       state.loan = 0;
       state.purpose = "";
+    },
+    converting(state) {
+      state.isLoading = true;
     },
   },
 });

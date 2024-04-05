@@ -103,11 +103,6 @@ let's analyze what happens
 
 ## lesson 12 ( Making an api call with Redux Thunks )
 
-- It didn't work because the package has been deprecated so we will fetch and apply middleware in reduxtoolkit
-
-this is the code 👇🏾
-![](./10.png)
-
 ## lesson 13 ( Redux Dev Tool )
 
 ## lesson 14 ( What is Redux toolkit )

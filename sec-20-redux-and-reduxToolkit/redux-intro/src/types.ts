@@ -17,6 +17,7 @@ export interface AccountState {
   balance: number;
   loan: number;
   purpose: string;
+  isLoading: boolean;
 }
 export interface CustomerState {
   fullName?: string;
