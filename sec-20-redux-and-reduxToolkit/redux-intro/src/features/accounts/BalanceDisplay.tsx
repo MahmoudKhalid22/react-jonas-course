@@ -11,8 +11,6 @@ function formatCurrency(value: number) {
 function BalanceDisplay() {
   const account = useSelector((state: States) => state.account);
 
-  console.log(account.isLoading);
-
   return <div className="balance">{formatCurrency(account.balance)}</div>;
 }
 

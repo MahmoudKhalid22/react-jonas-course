@@ -111,6 +111,16 @@ let's analyze what happens
 
 ## lesson 15 ( Creating the store with RTK )
 
+## lesson 16 ( Back to Thunks )
+
+we didn't do it with redux toolkit way because it is extra work and will be overkill for this simple task so we used reducer function and it is completely fine.
+
+## lesson 17 ( Comparing between redux and context api )
+
+![](./12.png)
+
+![](./13.png)
+
 ## Questions
 
 #### q) the difference between redux and useContext
@@ -144,3 +154,4 @@ crystal clear -> واضحة وضوح الشمس
 thunks -> دوال تأجيلية
 defer -> تأجيل
 boilerplate -> نموذجي
+debate -> مناظرة

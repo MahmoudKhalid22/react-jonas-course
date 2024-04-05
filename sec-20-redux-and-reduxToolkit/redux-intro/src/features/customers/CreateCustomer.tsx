@@ -17,7 +17,7 @@ function Customer() {
       setError(true);
       return;
     }
-    dispatch(createCustomer(fullName, nationalId));
+    dispatch(createCustomer(fullName, nationalId) as any);
   }
 
   return (

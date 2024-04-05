@@ -5,7 +5,7 @@ import {
   payLoan,
   requestLoan,
   withdraw,
-} from "./accountSlice-v1";
+} from "./accountSlice";
 import { Dispatch } from "redux";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
@@ -30,6 +30,7 @@ function AccountOperations() {
     if (!depositAmount) return;
     await dispatch(deposit(depositAmount, currency) as any);
     setDepositAmount(0);
+    setCurrency("USD");
   }
 
   function handleWithdrawal() {
@@ -40,7 +41,7 @@ function AccountOperations() {
 
   function handleRequestLoan() {
     if (!loanAmount || !loanPurpose) return;
-    dispatch(requestLoan(loanAmount, loanPurpose));
+    dispatch(requestLoan({ amount: loanAmount, purpose: loanPurpose }));
     setLoanAmount(0);
     setLoanPurpose("");
   }

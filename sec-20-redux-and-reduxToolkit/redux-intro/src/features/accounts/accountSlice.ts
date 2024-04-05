@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, Dispatch } from "@reduxjs/toolkit";
 import { AccountState, NormalAction, RequestLoanAction } from "../../types";
 
 const initialState: AccountState = {
@@ -37,7 +37,31 @@ const accountSlice = createSlice({
   },
 });
 
-export const { deposit, withdraw, requestLoan, payLoan } = accountSlice.actions;
+export const { withdraw, requestLoan, payLoan } = accountSlice.actions;
+
+export function deposit(
+  amount: number,
+  currency: string
+): (dispatch: Dispatch<any>) => Promise<void> {
+  if (currency === "USD") {
+    return (dispatch: Dispatch<any>) => {
+      dispatch({ type: "account/deposit", payload: amount });
+      return Promise.resolve();
+    };
+  }
+
+  return async (dispatch: Dispatch<any>) => {
+    dispatch({ type: "account/converting" });
+
+    const res = await fetch(
+      `https://api.frankfurter.app/latest?amount=${amount}&from=${currency}&to=USD`
+    );
+    const data = await res.json();
+
+    const converted = data.rates.USD;
+    dispatch({ type: "account/deposit", payload: converted });
+  };
+}
 
 export default accountSlice.reducer;
 
