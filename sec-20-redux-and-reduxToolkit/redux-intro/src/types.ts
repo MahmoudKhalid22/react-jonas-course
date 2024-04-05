@@ -1,6 +1,6 @@
 export interface NormalAction {
   type: string;
-  payload: number;
+  payload?: number;
 }
 
 export interface Payload {
@@ -10,7 +10,7 @@ export interface Payload {
 
 export interface RequestLoanAction {
   type: "account/requestLoan";
-  payload: Payload;
+  payload?: Payload;
 }
 
 export interface AccountState {
@@ -19,13 +19,13 @@ export interface AccountState {
   purpose: string;
 }
 export interface CustomerState {
-  fullName: string;
+  fullName?: string;
   nationalID?: string;
   createdAt?: string;
 }
 export interface CustomerAction {
   type: string;
-  payload: CustomerState;
+  payload?: CustomerState;
 }
 
 export interface States {

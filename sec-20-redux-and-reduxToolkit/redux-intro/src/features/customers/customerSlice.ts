@@ -16,15 +16,15 @@ export default function customerReducer(
 
       return {
         ...state,
-        fullName: action.payload.fullName,
-        nationalID: action.payload.nationalID,
-        createdAt: action.payload.createdAt,
+        fullName: action.payload?.fullName,
+        nationalID: action.payload?.nationalID,
+        createdAt: action.payload?.createdAt,
       };
     }
     case "customer/updateName":
       return {
         ...state,
-        fullName: action.payload.fullName,
+        fullName: action.payload?.fullName,
       };
 
     default:

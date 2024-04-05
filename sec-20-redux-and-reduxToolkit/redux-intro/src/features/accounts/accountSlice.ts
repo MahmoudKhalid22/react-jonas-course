@@ -13,14 +13,14 @@ const initialStateAccount: AccountState = {
 export type Action = RequestLoanAction | NormalAction;
 
 export default function accountReducer(
-  state: AccountState = initialStateAccount,
+  state = initialStateAccount,
   action: Action
 ): AccountState {
   switch (action.type) {
     case "account/deposit":
-      return { ...state, balance: state.balance + action.payload };
+      return { ...state, balance: state.balance + (action.payload as number) };
     case "account/withdraw":
-      return { ...state, balance: state.balance + action.payload };
+      return { ...state, balance: state.balance + (action.payload as number) };
     case "account/requestLoan":
       return {
         ...state,
