@@ -114,6 +114,8 @@ this is the code 👇🏾
 
 ![](./11.png)
 
+## lesson 15 ( Creating the store with RTK )
+
 ## Questions
 
 #### q) the difference between redux and useContext
@@ -146,3 +148,4 @@ Need for advanced features: When you require features like middleware for asynch
 crystal clear -> واضحة وضوح الشمس
 thunks -> دوال تأجيلية
 defer -> تأجيل
+boilerplate -> نموذجي
