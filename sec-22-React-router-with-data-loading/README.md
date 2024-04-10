@@ -43,6 +43,26 @@ so this is the list of requirements that our application will need to satisfy bu
 
 ![](./05.png)
 
+what we want to do now is to derive the application's main features categories from the list of requirement that we just saw so first of all, remember how the user needs to input their name in order to start using the application so
+<u>one feature categore</u> is going to be everything related to the user.
+<u>Another pretty obvious categorey is </u> the menu
+<u>Another pretty obvious categorey is </u> the cart
+<u>Finally one of the big feature categories is </u> the order
+
+- This will give us a high level overview of what the project is all about
+
+- Now from this list of requirements and also specially from these feature categories, we can already start to understand the pages that we are going to need to implement.
+
+(look at the pic 👆🏾)
+
+This will all become a lot clearer as we actually start building this project in practice.
+
+- Now moving on in this process let's talk about state mangement and tech decision
+
+![](./06.png)
+
+based on the first part of the pic we will decide which technology stack we will use so we decided to use the second part of the pic 👆🏾
+
 ## Questions
 
 1. when I used vite I get some options ( typescript , typescript with swc, js , js with swc ) what does that mean
@@ -116,3 +136,5 @@ In summary, while SWC offers undeniable performance advantages, Vite considers a
 
 intimidating -> مخيف
 rough overview -> نظرة عامة تقريبية
+controversial part -> جزء مثير للجدل
+persist state -> بقاء state
