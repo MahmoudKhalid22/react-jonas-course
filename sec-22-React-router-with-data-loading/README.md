@@ -85,6 +85,10 @@ React version 6.4 introduced a whole new way of defining routes and of working w
 so from now on we can use some powerful mechanisms inside React Router <u>for fetching data into pages and submitting data using forms, so all within react router.</u>
 look at the code [here](./fast-react-pizza/src/App.tsx)
 
+## lesson 6 ( Building app layout )
+
+implement a global application layout with react router
+
 ## Questions
 
 1. when I used vite I get some options ( typescript , typescript with swc, js , js with swc ) what does that mean
