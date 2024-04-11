@@ -79,6 +79,12 @@ Let's keep going and add one for utilities and so these are basically just some 
 
 we could keep going here and we would do that if we had a more complex app for example, we could create a reusable context folder or a reusable hooks folder or also a pages folder like we did before in a world wise app but here in this app we will not have that special folder and instead we also place these pages in the feature folders.
 
+## lesson 5 ( A new way of implementing routes )
+
+React version 6.4 introduced a whole new way of defining routes and of working with React Router.
+so from now on we can use some powerful mechanisms inside React Router <u>for fetching data into pages and submitting data using forms, so all within react router.</u>
+look at the code [here](./fast-react-pizza/src/App.tsx)
+
 ## Questions
 
 1. when I used vite I get some options ( typescript , typescript with swc, js , js with swc ) what does that mean
