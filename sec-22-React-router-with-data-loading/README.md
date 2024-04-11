@@ -63,7 +63,7 @@ This will all become a lot clearer as we actually start building this project in
 
 based on the first part of the pic we will decide which technology stack we will use so we decided to use the second part of the pic 👆🏾
 
-## lesson 4 ( Settigup a professinal file structure )
+## lesson 4 ( Setting up a professinal file structure )
 
 There are many different ways in which we can structure a professional react application and every developer has a different opinion about this.
 
@@ -88,6 +88,18 @@ look at the code [here](./fast-react-pizza/src/App.tsx)
 ## lesson 6 ( Building app layout )
 
 implement a global application layout with react router
+
+## lesson 7 ( Fetching Data with react router "Loaders": Pizza Menu )
+
+The idea behind the loader is that somewhere in our code we create a function that fetches some data from an API, we then provide that loader function to one of our routes and that route will then fetch that data as soon as the application goes to that route and then at the end once the data has arrived, it will be provided to the page component itself using a custom hook.
+Again, we do this in three steps:
+1- we create the loader
+2- we provide the loader
+3- we provide the data to the page
+
+look at the code [here](./fast-react-pizza/src/App.tsx)
+
+the nice thing about this is that React Router will actually start fetching the data at the same time as it starts rendering the correct route. So these things really happen at the same time, while what we did before using useEffect was always a fetch on render approach. so basically we render the component first, and we then would start to fetch the data. and so that would then create so-called data loading waterfalls, but not here. so here everything really happens at the same time, which is a really nice and really modern things to do.
 
 ## Questions
 
