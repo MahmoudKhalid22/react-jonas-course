@@ -63,6 +63,22 @@ This will all become a lot clearer as we actually start building this project in
 
 based on the first part of the pic we will decide which technology stack we will use so we decided to use the second part of the pic 👆🏾
 
+## lesson 4 ( Settigup a professinal file structure )
+
+There are many different ways in which we can structure a professional react application and every developer has a different opinion about this.
+
+(Opinion) I like to do, and what I find works really really well with big projects is a feature based structure so instead of creating one big folder which contains all the components, instead what I like to do is to create on feature folder so right inside source let's create a folder called features and in it we will create folder for each feature ( User - Cart - Menu - Order )
+and each feature will contain all the components, all the custom hooks, and really all typescript files that are necessary to make each of the feature work.
+So all these files are going to be co-located in the same plcace so that we don't have to jump around all the time inside our folder structure.
+However, there are also some components that are more reusable that don't really belong in any of these features.
+and for that, let's create one folder called UI. And so this will basically contain reusable UI components such as buttons, inputs and so on.
+
+Now next up, let's create the services folder. it is for reusable code for interacting with an API.
+
+Let's keep going and add one for utilities and so these are basically just some helper functions that we can also reuse in multiple places in the application. so these are reusable and more importantly, stateless helper functions that don't create any side effects.
+
+we could keep going here and we would do that if we had a more complex app for example, we could create a reusable context folder or a reusable hooks folder or also a pages folder like we did before in a world wise app but here in this app we will not have that special folder and instead we also place these pages in the feature folders.
+
 ## Questions
 
 1. when I used vite I get some options ( typescript , typescript with swc, js , js with swc ) what does that mean
