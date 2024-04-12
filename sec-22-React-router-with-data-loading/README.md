@@ -101,6 +101,13 @@ look at the code [here](./fast-react-pizza/src/App.tsx)
 
 the nice thing about this is that React Router will actually start fetching the data at the same time as it starts rendering the correct route. So these things really happen at the same time, while what we did before using useEffect was always a fetch on render approach. so basically we render the component first, and we then would start to fetch the data. and so that would then create so-called data loading waterfalls, but not here. so here everything really happens at the same time, which is a really nice and really modern things to do.
 
+## lesson 8 ( displaying a loading indicator )
+
+There is a delay between a click on loader event and data arriving, so during that time we of course want to display a spinner, so we want to know whether these data is loading or not and we don't have this loading state.
+we can get access to this information by <u>useNavigation</u> hook in react router. And this actually for the entire application not for page but the entire router.
+So if one of this pages is loading, the navigation state will become loading no matter which of these pages actually being loaded.
+Therefore, it doesn't make much sense to create the loader right here (in specific component) but instead we will make one generic loader (in AppLayout file) [here](./fast-react-pizza/src/ui/AppLayout.tsx).
+
 ## Questions
 
 1. when I used vite I get some options ( typescript , typescript with swc, js , js with swc ) what does that mean
@@ -176,3 +183,4 @@ intimidating -> مخيف
 rough overview -> نظرة عامة تقريبية
 controversial part -> جزء مثير للجدل
 persist state -> بقاء state
+idle -> عاطل
