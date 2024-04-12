@@ -108,6 +108,10 @@ we can get access to this information by <u>useNavigation</u> hook in react rout
 So if one of this pages is loading, the navigation state will become loading no matter which of these pages actually being loaded.
 Therefore, it doesn't make much sense to create the loader right here (in specific component) but instead we will make one generic loader (in AppLayout file) [here](./fast-react-pizza/src/ui/AppLayout.tsx).
 
+## lesson 9 ( Handling errors with error elements )
+
+with useRouterError() hook from react router dom and errorElement in BrowserRouter
+
 ## Questions
 
 1. when I used vite I get some options ( typescript , typescript with swc, js , js with swc ) what does that mean
