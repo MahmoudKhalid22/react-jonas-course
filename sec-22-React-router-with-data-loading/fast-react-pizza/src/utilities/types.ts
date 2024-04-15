@@ -14,9 +14,10 @@ export interface Menu {
 export interface Order {
   id: string;
   status: string;
-  priority: boolean;
+  priority?: boolean | string;
   priorityPrice: number;
   orderPrice: number;
   estimatedDelivery: number;
-  cart: string;
+  cart?: string | undefined;
+  phone: string;
 }

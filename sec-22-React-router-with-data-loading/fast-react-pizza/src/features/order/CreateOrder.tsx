@@ -5,14 +5,17 @@ import {
   ActionFunctionArgs,
   Form,
   redirect,
+  useActionData,
+  useNavigation,
 } from "react-router-dom";
 import { createOrder } from "../../services/apiRestaurant";
+import { Order } from "../../utilities/types";
 
 // https://uibakery.io/regex-library/phone-number
-// const isValidPhone = (str) =>
-//   /^\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/.test(
-//     str
-//   );
+const isValidPhone = (str: string): boolean =>
+  /^\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/.test(
+    str
+  );
 
 const fakeCart = [
   {
@@ -40,6 +43,11 @@ const fakeCart = [
 
 function CreateOrder() {
   // const [withPriority, setWithPriority] = useState(false);
+  const navigation = useNavigation();
+  const isSubmitting = navigation.state === "submitting";
+
+  const formErrors: { phone: string } = useActionData() as { phone: string };
+
   const cart = fakeCart;
 
   return (
@@ -58,6 +66,7 @@ function CreateOrder() {
           <div>
             <input type="tel" name="phone" required />
           </div>
+          {formErrors?.phone && <p>{formErrors.phone}</p>}
         </div>
 
         <div>
@@ -80,7 +89,9 @@ function CreateOrder() {
 
         <div>
           <input name="cart" value={JSON.stringify(cart)} type="hidden" />
-          <button>Order now</button>
+          <button disabled={isSubmitting}>
+            {isSubmitting ? "Placing order..." : "Order now"}
+          </button>
         </div>
       </Form>
     </div>
@@ -90,13 +101,25 @@ function CreateOrder() {
 // eslint-disable-next-line react-refresh/only-export-components
 export async function action({ request }: ActionFunctionArgs) {
   const formData = await request.formData();
-  const data = Object.fromEntries(formData);
+  const data: Order = Object.fromEntries(formData) as unknown as Order;
 
-  const order = {
+  const order: Order = {
     ...data,
-    cart: JSON.parse(data?.cart as any),
-    priority: data?.priority === "on",
+    cart: JSON.parse(data?.cart as string),
+    priority: data.priority === "on",
   };
+
+  const errors: { phone: string } = {
+    phone: "",
+  };
+
+  const isValid = isValidPhone(order?.phone);
+  if (!isValid) {
+    errors.phone = "please give us your correct number. we neet to contact you";
+  }
+  if (errors.phone.length > 0) return errors;
+  console.log(isValid);
+  console.log(errors.phone.length);
 
   const newOrder = await createOrder(order);
 
