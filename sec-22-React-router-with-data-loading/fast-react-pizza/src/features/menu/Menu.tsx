@@ -5,7 +5,6 @@ import { Pizza } from "../../utilities/types";
 
 function Menu() {
   const menu: Pizza[] = useLoaderData() as Pizza[];
-  console.log(menu);
 
   return (
     <ul>

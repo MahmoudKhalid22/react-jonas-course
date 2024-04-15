@@ -112,6 +112,22 @@ Therefore, it doesn't make much sense to create the loader right here (in specif
 
 with useRouterError() hook from react router dom and errorElement in BrowserRouter
 
+## lesson 10 ( Fetching orders )
+
+exploring new {params} in react router dom and its type in typescript
+
+![](./07.png)
+
+## lesson 11 ( Writing data with react router "Actions" )
+
+While loaders that we used earlier are to read data, actions are used to write data or to mutate data so a state that is stored on some server.
+
+(GET - POST - PATCH - DELETE)
+GET => loader
+(POST PATCH DELETE PUT ... ) => actions
+
+## lesson 12 ( Error Handling in form "Actions" )
+
 ## Questions
 
 1. when I used vite I get some options ( typescript , typescript with swc, js , js with swc ) what does that mean
@@ -180,6 +196,14 @@ Community and Adoption: Babel has a much larger and more established community. 
 Balancing Speed and Stability: While speed is crucial, stability is equally important. Vite might prioritize the stability and broader compatibility of Babel by default, ensuring a smooth experience for a wider range of users. However, Vite provides the option of choosing SWC for projects that value speed above all else.
 
 In summary, while SWC offers undeniable performance advantages, Vite considers a balance of various factors. By making Babel the default, Vite ensures a more predictable and well-supported experience for a broader audience, while still offering SWC as an option for those who prioritize speed.
+
+2. Q) what is type of event in typescript in form
+
+ans) e: React.FormEvent<EventTarget>
+
+3. Q) What is type of params in react router dom
+
+ans) { params }: LoaderFunctionArgs<typeof USER_ROUTE>) <-> USER_ROUTE is a string
 
 ## vocabularies
 
