@@ -18,6 +18,27 @@ export interface Order {
   priorityPrice: number;
   orderPrice: number;
   estimatedDelivery: number;
-  cart?: string | undefined;
+  cart?: Item[] | undefined;
   phone: string;
+}
+
+export interface Style {
+  primary: string;
+  small: string;
+  secondary: string;
+}
+
+export interface Item {
+  id: string;
+  quantity: number;
+  name: string;
+  totalPrice: number;
+}
+
+export interface FakeCart {
+  pizzaId: number;
+  name: string;
+  quantity: number;
+  unitPrice: number;
+  totalPrice: number;
 }
