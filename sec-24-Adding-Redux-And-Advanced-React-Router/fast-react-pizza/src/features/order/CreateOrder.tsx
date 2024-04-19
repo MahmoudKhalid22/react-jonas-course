@@ -10,12 +10,13 @@ import {
 import { createOrder } from "../../services/apiRestaurant";
 import { Order, States } from "../../utilities/types";
 import Button from "../../ui/Button";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { clearCart, getCart, getTotalCartPrice } from "../cart/cartSlice";
 import EmptyCart from "../cart/EmptyCart";
 import store from "../../store";
 import { formatCurrency } from "../../utilities/helpers";
 import { useState } from "react";
+import { fetchAddress } from "../user/userSlice";
 
 // https://uibakery.io/regex-library/phone-number
 const isValidPhone = (str: string): boolean =>
@@ -35,12 +36,16 @@ function CreateOrder() {
   const totalFinalPrice = finalPrice + priorityPrice;
 
   const formErrors: { phone: string } = useActionData() as { phone: string };
-
+  const dispatch = useDispatch();
   if (cart?.length === 0) return <EmptyCart />;
 
   return (
     <div className="px-4 py-6">
       <h2 className="mb-8 text-xl font-semibold">Ready to order? Let's go!</h2>
+
+      <button onClick={(): any => dispatch(fetchAddress() as any)}>
+        GET POSITION
+      </button>
 
       {/* <Form method="POST" action="/order/new"> THIS WORKS AS WELL SUCCESSSFULLY */}
       <Form method="POST">

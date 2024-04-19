@@ -47,6 +47,13 @@ export interface FakeCart {
 
 export interface UserState {
   name: string;
+  loading?: "idle" | "pending" | "succeeded" | "failed";
+  position?: {
+    latitude: number;
+    longitude: number;
+  };
+  address: string;
+  error?: string;
 }
 export interface CartState {
   cart: Item[];
@@ -55,4 +62,12 @@ export interface CartState {
 export interface States {
   user?: UserState;
   cart?: CartState;
+}
+
+export interface Coords {
+  latitude?: number;
+  longitude?: number;
+}
+export interface PositionObj {
+  coords?: Coords;
 }
