@@ -58,8 +58,8 @@ export const getTotalCartQuantity = (state: States): number =>
     0
   ) as number;
 
-export const getTotalCartPrice = (state: States) =>
-  state.cart?.cart.reduce((sum, item) => sum + item.totalPrice, 0);
+export const getTotalCartPrice = (state: States): number =>
+  state.cart?.cart.reduce((sum, item) => sum + item.totalPrice, 0) as number;
 
 export const getCurrentQuantity =
   (id: string): ((state: States) => number) =>

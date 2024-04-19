@@ -1,10 +1,13 @@
 import CartOverview from "../features/cart/CartOverview";
 import Header from "./Header";
-import { Outlet, useNavigation, useRouteError } from "react-router-dom";
+import { Outlet, useNavigation } from "react-router-dom";
 import Loader from "./Loader";
+import { useSelector } from "react-redux";
+import { States } from "../utilities/types";
 
 const AppLayout = () => {
   const navigation = useNavigation();
+  const cart = useSelector((state: States) => state.cart?.cart);
 
   const isLoading = navigation.state === "loading";
 
@@ -17,7 +20,7 @@ const AppLayout = () => {
           <Outlet />
         </main>
       </div>
-      <CartOverview />
+      {cart?.length && <CartOverview />}
     </div>
   );
 };
