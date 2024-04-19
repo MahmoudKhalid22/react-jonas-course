@@ -1,5 +1,5 @@
 export interface Pizza {
-  id: number;
+  id: string;
   name: string;
   unitPrice: number;
   imageUrl: string;
@@ -25,6 +25,7 @@ export interface Order {
 export interface Style {
   primary: string;
   small: string;
+  round: string;
   secondary: string;
 }
 
