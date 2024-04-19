@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import CartItem from "./CartItem";
 import Button from "../../ui/Button";
 import LinkButton from "../../ui/LinkButton";
@@ -41,7 +40,6 @@ function Cart() {
         ))}
       </ul>
       <div className="mt-6 space-x-2">
-        <Link to="/order/new">Order pizzas</Link>
         <Button to="/order/new" type="primary">
           Order pizzas
         </Button>
