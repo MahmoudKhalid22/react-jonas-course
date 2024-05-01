@@ -1,19 +1,25 @@
 // Test ID: IIDSAT
 
-import { LoaderFunctionArgs, useLoaderData } from "react-router-dom";
+import {
+  LoaderFunctionArgs,
+  useFetcher,
+  useLoaderData,
+} from "react-router-dom";
 import { getOrder } from "../../services/apiRestaurant";
 import {
   calcMinutesLeft,
   formatCurrency,
   formatDate,
 } from "../../utilities/helpers";
-import { Item, Order } from "../../utilities/types";
+import { Item, Order as OrderType } from "../../utilities/types";
 import OrderItem from "./OrderItem";
+import { useEffect } from "react";
+import UpdateOrder from "./UpdateOrder";
 
 function Order() {
   // Everyone can search for all orders, so for privacy reasons we're gonna gonna exclude names or address, these are only for the restaurant staff
-  const order: Order = useLoaderData() as Order;
-
+  const order: OrderType = useLoaderData() as OrderType;
+  const fetcher = useFetcher();
   const {
     id,
     status,
@@ -24,6 +30,12 @@ function Order() {
     cart,
   } = order;
   const deliveryIn = calcMinutesLeft(estimatedDelivery);
+
+  useEffect(() => {
+    if (!fetcher.data && fetcher.state === "idle") {
+      fetcher.load("/menu");
+    }
+  }, [fetcher]);
 
   return (
     <div className="space-y-8 px-4 py-6">
@@ -54,7 +66,16 @@ function Order() {
       </div>
       <ul className="dive-stone-200 divide-y border-b border-t">
         {cart?.map((item: Item) => (
-          <OrderItem item={item} key={item.pizzaId} />
+          <OrderItem
+            item={item}
+            key={item.pizzaId}
+            ingredients={
+              fetcher?.data?.find(
+                (el: { id: string }) => el.id === item.pizzaId
+              ).ingredients
+            }
+            isLoadingIngredients={fetcher.state === "loading"}
+          />
         ))}
       </ul>
       <div className="space-y-2 bg-stone-200 px-6 py-5">
@@ -70,6 +91,7 @@ function Order() {
           To pay on delivery: {formatCurrency(orderPrice + priorityPrice)}
         </p>
       </div>
+      {!priority && <UpdateOrder />}
     </div>
   );
 }
@@ -79,7 +101,7 @@ const USER_ROUTE: string = "/order/:id";
 // eslint-disable-next-line react-refresh/only-export-components
 export async function loader({
   params,
-}: LoaderFunctionArgs<typeof USER_ROUTE>): Promise<Order> {
+}: LoaderFunctionArgs<typeof USER_ROUTE>): Promise<OrderType> {
   const order = await getOrder(params?.id as string);
   return order;
 }

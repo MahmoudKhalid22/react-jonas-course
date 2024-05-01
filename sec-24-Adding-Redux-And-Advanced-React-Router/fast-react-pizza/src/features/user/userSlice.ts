@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { Coords, PositionObj, UserState } from "../../utilities/types";
 import { getAddress } from "../../services/apiGeocoding";
 
-function getPosition() {
+function getPosition(): Promise<GeolocationPosition> {
   return new Promise(function (resolve, reject) {
     navigator.geolocation.getCurrentPosition(resolve, reject);
   });
@@ -59,9 +59,10 @@ const userSlice = createSlice({
         state.address = action.payload.address;
         state.loading = "idle";
       })
-      .addCase(fetchAddress.rejected, (state, action) => {
+      .addCase(fetchAddress.rejected, (state) => {
         state.loading = "failed";
-        state.error = action.error.message;
+        state.error =
+          "There was a problem getting your address. Make sure to fill this field";
       });
   },
 });

@@ -9,6 +9,7 @@ import CreateOrder, {
 import Order, { loader as orderLoader } from "./features/order/Order";
 import AppLayout from "./ui/AppLayout";
 import Error from "./ui/Error";
+import { action as updateAction } from "./features/order/UpdateOrder";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,8 @@ const router = createBrowserRouter([
         path: "/order/:id",
         element: <Order />,
         loader: orderLoader,
+        // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+        action: updateAction,
       },
     ],
   },

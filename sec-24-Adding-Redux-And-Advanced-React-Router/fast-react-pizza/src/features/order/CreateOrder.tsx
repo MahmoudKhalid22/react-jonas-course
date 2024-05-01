@@ -29,7 +29,7 @@ function CreateOrder() {
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
 
-  const username = useSelector((state: States) => state.user?.name);
+  const user = useSelector((state: States) => state.user);
   const cart = useSelector(getCart);
   const finalPrice: number = useSelector(getTotalCartPrice);
   const priorityPrice = withPriority ? 0.2 * finalPrice : 0;
@@ -37,22 +37,19 @@ function CreateOrder() {
 
   const formErrors: { phone: string } = useActionData() as { phone: string };
   const dispatch = useDispatch();
+
   if (cart?.length === 0) return <EmptyCart />;
 
   return (
     <div className="px-4 py-6">
       <h2 className="mb-8 text-xl font-semibold">Ready to order? Let's go!</h2>
 
-      <button onClick={(): any => dispatch(fetchAddress() as any)}>
-        GET POSITION
-      </button>
-
       {/* <Form method="POST" action="/order/new"> THIS WORKS AS WELL SUCCESSSFULLY */}
       <Form method="POST">
         <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-center">
           <label className="sm:basis-40">First Name</label>
           <input
-            defaultValue={username}
+            defaultValue={user?.name}
             className="input grow"
             type="text"
             name="customer"
@@ -72,16 +69,41 @@ function CreateOrder() {
           )}
         </div>
 
-        <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-center">
+        <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-center relative">
           <label className="sm:basis-40">Address</label>
           <div className="grow">
             <input
               className="input w-full"
               type="text"
               name="address"
+              defaultValue={user?.address}
               required
             />
+            {user?.loading === "failed" && (
+              <p className="mt-2 rounded-md bg-red-100 p-2 text-xs text-red-700">
+                {user.error}
+              </p>
+            )}
           </div>
+          {!user?.position?.latitude && !user?.position?.longitude && (
+            <span
+              className={`absolute right-[3px] ${user?.loading === "failed" ? "bottom-11" : ""}`}
+            >
+              {/* implicit any */}
+              <Button
+                type="small"
+                disabled={user?.loading === "pending"}
+                onClick={(e: React.FormEvent): void => {
+                  e.preventDefault();
+                  dispatch(
+                    fetchAddress() as unknown as any /* eslint-disable-line @typescript-eslint/no-explicit-any */
+                  );
+                }}
+              >
+                GET POSITION
+              </Button>
+            </span>
+          )}
         </div>
 
         <div className="mb-12 flex items-center gap-5">
@@ -90,7 +112,7 @@ function CreateOrder() {
             type="checkbox"
             name="priority"
             id="priority"
-            value={withPriority}
+            value={withPriority as any /* eslint-disable-line */}
             onChange={(e) => setWithPriority(e.target.checked)}
           />
           <label className="font-medium" htmlFor="priority">
@@ -100,6 +122,15 @@ function CreateOrder() {
 
         <div>
           <input name="cart" value={JSON.stringify(cart)} type="hidden" />
+          <input
+            type="hidden"
+            name="position"
+            value={
+              user?.position?.latitude && user?.position?.longitude
+                ? `${user?.position?.latitude}, ${user?.position?.longitude}`
+                : ""
+            }
+          />
           <Button type="primary" disabled={isSubmitting}>
             {isSubmitting
               ? "Placing order..."
@@ -118,7 +149,7 @@ export async function action({ request }: ActionFunctionArgs) {
 
   const order: Order = {
     ...data,
-    cart: JSON.parse(data?.cart as any),
+    cart: JSON.parse(data?.cart as any /* eslint-disable-line */),
     priority: data.priority === "true",
   };
 

@@ -4,7 +4,7 @@ import { States } from "../utilities/types";
 import Button from "./Button";
 
 function Home() {
-  const username = useSelector((state: States) => state.user.name);
+  const username = useSelector((state: States) => state.user?.name);
   return (
     <div className="my-10 px-4 text-center sm:my-16">
       <h1 className="mb-8  text-xl font-semibold md:text-3xl">
@@ -19,7 +19,7 @@ function Home() {
         <CreateUser />
       ) : (
         <Button type="primary" to="/menu">
-          Continue Ordering {username}
+          Continue Ordering {username ? username : ""}
         </Button>
       )}
     </div>

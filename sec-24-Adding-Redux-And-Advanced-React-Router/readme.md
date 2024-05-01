@@ -20,3 +20,7 @@ search for redux store
 ```
 
 - importing store and using them directly in our function that is outside the component but don't overuse it because it is a bit of hacking and deactivate a couple of performace optimizations of redux on this page
+
+## useFetcher
+
+some api react router provides to load data in another route
