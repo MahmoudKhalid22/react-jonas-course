@@ -24,12 +24,11 @@ async function deleteCabin(id: string | number) {
 
 async function createEditCabin(newCabin: any) {
   // 1. add a new cabin
+  console.log(newCabin);
 
   newCabin = newCabin.newCabin;
 
-  console.log(newCabin);
   const hasImagePath = typeof newCabin.image === "string";
-  console.log(hasImagePath);
 
   const imageName = `${Math.random()}-${newCabin.image.name}`.replace("/", "");
 
@@ -55,7 +54,7 @@ async function createEditCabin(newCabin: any) {
   }
 
   // 2. upload the image
-
+  if (hasImagePath) return data;
   const { error: storageError } = await supabase.storage
     .from("cabin-images")
     .upload(imageName, newCabin?.image);
