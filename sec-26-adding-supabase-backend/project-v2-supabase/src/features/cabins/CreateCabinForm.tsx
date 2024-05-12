@@ -46,7 +46,10 @@ const Error = styled.span`
   color: var(--color-red-700);
 `;
 
-function CreateCabinForm({ cabinToEdit = {} }?: Cabin) {
+function CreateCabinForm(
+  { cabinToEdit = {} }?: Cabin,
+  { onClose }: { onClose: () => void }
+) {
   const { id: editId, ...editValues } = cabinToEdit;
 
   // eslint-disable-next-line no-extra-boolean-cast
@@ -76,14 +79,20 @@ function CreateCabinForm({ cabinToEdit = {} }?: Cabin) {
           newCabin: { ...data, image, id: editId },
         },
         {
-          onSuccess: () => reset(),
+          onSuccess: () => {
+            reset();
+            onClose?.();
+          },
         }
       );
     else
       createCabin(
         { newCabin: { ...data, image: image } },
         {
-          onSuccess: () => reset(),
+          onSuccess: () => {
+            reset();
+            onClose?.();
+          },
         }
       );
   };
@@ -91,7 +100,7 @@ function CreateCabinForm({ cabinToEdit = {} }?: Cabin) {
   const isProcessing = isPending || isEditingLoading;
   // JSX
   return (
-    <Form onSubmit={handleSubmit(submitForm)}>
+    <Form onSubmit={handleSubmit(submitForm)} type="modal">
       <FormRow>
         <Label htmlFor="name">Cabin name</Label>
         <Input
@@ -183,7 +192,7 @@ function CreateCabinForm({ cabinToEdit = {} }?: Cabin) {
 
       <FormRow>
         {/* type is an HTML attribute! */}
-        <Button variation="secondary" type="reset">
+        <Button variation="secondary" type="reset" onClick={() => onClose?.()}>
           Cancel
         </Button>
         <Button disabled={isProcessing}>
