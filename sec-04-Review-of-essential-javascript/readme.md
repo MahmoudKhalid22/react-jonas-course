@@ -17,7 +17,7 @@ we're goning to review topics
 - you can say that callback function is a function that you pass it to another function as an argument to be excuted later
 
 example:
-function to handle phot
+- function to handle photo
 1- download photo from url
 2- resize photo
 3- add logo to the photo
